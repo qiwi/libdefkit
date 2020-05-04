@@ -1,5 +1,5 @@
 import {resolve} from 'path'
-import { argv } from 'yargs'
+import {argv} from 'yargs'
 import assert from 'assert'
 import rep, {ReplaceInFileConfig, replaceInFileSync, ReplaceResult} from 'replace-in-file'
 import {readFileSync} from 'fs'
@@ -28,7 +28,7 @@ const options: ReplaceInFileConfig = {
     BROKEN_MODULE_NAME,
     REFERENCE,
     /^\s*[\r\n]/gm,
-    IMPORT
+    IMPORT,
   ],
   to: [
     '',
@@ -50,9 +50,9 @@ const options: ReplaceInFileConfig = {
         : module.replace(prefix + '/', '')
 
       return `${pre}${name}${post}`
-    }
+    },
   ],
 }
 
-const changes: ReplaceResult[] = replaceInFileSync(options);
-console.log('Modified files:', changes);
+const changes: ReplaceResult[] = replaceInFileSync(options)
+console.log('Modified files:', changes)
