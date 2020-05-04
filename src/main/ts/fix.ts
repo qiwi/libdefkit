@@ -1,8 +1,12 @@
 import {resolve} from 'path'
+import {readFileSync} from 'fs'
 import {argv} from 'yargs'
 import assert from 'assert'
-import rep, {ReplaceInFileConfig, replaceInFileSync, ReplaceResult} from 'replace-in-file'
-import {readFileSync} from 'fs'
+import {
+  ReplaceInFileConfig,
+  replaceInFileSync,
+  ReplaceResult
+} from 'replace-in-file'
 
 const {dts, prefix} = argv
 const DTS = resolve(dts as string)
@@ -18,7 +22,7 @@ const dtsFile = readFileSync(DTS, 'utf-8')
 const declaredModules = (dtsFile.match(/declare module '.*'/g) || []).map(v => v.slice(16, -1))
 
 // console.log(declaredModules)
-console.log(rep.sync)
+console.log(replaceInFileSync)
 
 const options: ReplaceInFileConfig = {
   files: DTS,
@@ -31,7 +35,7 @@ const options: ReplaceInFileConfig = {
     IMPORT,
   ],
   to: [
-    '',
+    () => '',
     (line: string) => {
       const [, name] = IMPORT_MAIN_LINE_PATTERN.exec(line) || []
       return `	export * from '${name}';`
@@ -40,8 +44,8 @@ const options: ReplaceInFileConfig = {
       const [, module] = BROKEN_MODULE_NAME.exec(line) || []
       return `${module}index' {`
     },
-    '',
-    '',
+    () => '',
+    () => '',
     (line: string) => {
       const re = /^(.+from ')([^']+)('.*)$/
       const [, pre, module, post] = re.exec(line) || []
