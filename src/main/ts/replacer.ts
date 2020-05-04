@@ -1,4 +1,11 @@
-import {IReplacer, IReplacerFactory} from './interface'
+import {IReplacer, IReplacerFactory, IReplacerContext} from './interface'
+
+export const initReplacers = (replacers: Array<IReplacer | IReplacerFactory>, cxt: IReplacerContext): IReplacer[] =>
+  replacers.map(replacer =>
+    typeof replacer === 'function'
+      ? replacer(cxt)
+      : replacer
+  )
 
 export const replaceExportMain: IReplacer = {
   from: '\texport = main;',

@@ -1,5 +1,6 @@
-import {IReplacer} from '../../main/ts/interface'
+import {IReplacer, IReplacerFactory} from '../../main/ts/interface'
 import {
+  initReplacers,
   replaceExportMain,
   replaceImportMain,
   replaceBrokenModulePrefix,
@@ -9,6 +10,19 @@ import {
 } from '../../main/ts/replacer'
 
 describe('replacer', () => {
+  describe('initReplacers', () => {
+    const dtsData = ''
+    const prefix = ''
+    const cxt = { dtsData, prefix }
+
+    const replacer1: IReplacer = { from: '1', to: '11'}
+    const replacer2: IReplacer = { from: '2', to: '22'}
+    const replacer2Factory: IReplacerFactory = jest.fn((_cxt) => replacer2)
+
+    expect(initReplacers([replacer1, replacer2Factory], cxt)).toEqual([replacer1, replacer2])
+    expect(replacer2Factory).toHaveBeenCalledWith(cxt)
+  })
+
   const assertReplacement = ({from, to}: IReplacer, input: string, output: string) => {
     if (from instanceof RegExp) {
       expect(from.test(input)).toBeTruthy()
