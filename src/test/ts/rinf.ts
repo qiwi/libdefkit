@@ -5,7 +5,7 @@ import {
   rinf,
   getRinfConfig,
   splitReplacers,
-} from '../../main/ts/rinf'
+} from '../../main/ts'
 
 describe('rinf', () => {
   const inputDtsPath = resolve(__dirname, '../fixtures/input.d.ts')
@@ -26,8 +26,8 @@ describe('rinf', () => {
   })
 
   it('#splitReplacers', () => {
-    const replacer1: IReplacer = { from: '1', to: '11'}
-    const replacer2: IReplacer = { from: '2', to: '22'}
+    const replacer1: IReplacer = {from: '1', to: '11'}
+    const replacer2: IReplacer = {from: '2', to: '22'}
 
     expect(splitReplacers([replacer1, replacer2])).toEqual({
       from: ['1', '2'],

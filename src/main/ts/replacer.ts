@@ -4,12 +4,12 @@ export const initReplacers = (replacers: Array<IReplacer | IReplacerFactory>, cx
   replacers.map(replacer =>
     typeof replacer === 'function'
       ? replacer(cxt)
-      : replacer
+      : replacer,
   )
 
 export const replaceExportMain: IReplacer = {
   from: '\texport = main;',
-  to: ''
+  to: '',
 }
 
 export const replaceImportMain: IReplacer = {
@@ -17,7 +17,7 @@ export const replaceImportMain: IReplacer = {
   to: (line: string) => {
     const [, name] = /^\timport main = require\('(.+)'\);$/.exec(line) || []
     return `	export * from '${name}';`
-  }
+  },
 }
 
 export const replaceBrokenModulePrefix: IReplacer = (pattern => ({
@@ -25,17 +25,17 @@ export const replaceBrokenModulePrefix: IReplacer = (pattern => ({
   to: (line: string) => {
     const [, module] = pattern.exec(line) || []
     return `${module}index' {`
-  }
+  },
 }))(/(declare module '.+\/target\/es5\/)[^/]*\/src\/main\/index'.+/)
 
 export const replaceModuleTypeRefs: IReplacer = {
   from: /\/\/\/.+/,
-  to: ''
+  to: '',
 }
 
 export const replaceEmptyLines: IReplacer = {
   from: /^\s*[\r\n]/gm,
-  to: ''
+  to: '',
 }
 
 export const replaceLocalModulesScope: IReplacerFactory = ({dtsData, prefix}) => {
@@ -51,6 +51,6 @@ export const replaceLocalModulesScope: IReplacerFactory = ({dtsData, prefix}) =>
         : module.replace(prefix + '/', '')
 
       return `${pre}${name}${post}`
-    }
+    },
   }
 }

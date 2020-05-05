@@ -16,12 +16,12 @@ const cli = meow(`
 `, {
   flags: {
     dts: {
-      type: 'string'
+      type: 'string',
     },
     prefix: {
-      type: 'string'
-    }
-  }
+      type: 'string',
+    },
+  },
 })
 
 rinf(cli.flags)

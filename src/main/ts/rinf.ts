@@ -6,7 +6,7 @@ import {
   From,
   To,
   replaceInFileSync,
-  ReplaceResult
+  ReplaceResult,
 } from 'replace-in-file'
 
 import {
@@ -16,7 +16,7 @@ import {
   replaceBrokenModulePrefix,
   replaceModuleTypeRefs,
   replaceEmptyLines,
-  replaceLocalModulesScope
+  replaceLocalModulesScope,
 } from './replacer'
 import {logger} from './logger'
 import {IReplacer, IRunnerOpts} from './interface'
@@ -34,14 +34,14 @@ export const rinf = (opts: IRunnerOpts) => {
 
 export const getRinfConfig = ({dts, prefix}: IRunnerOpts): ReplaceInFileConfig => {
   const dtsPath = resolve(dts)
-  const dtsData = readFileSync(dtsPath, 'utf-8') as string
+  const dtsData = readFileSync(dtsPath, 'utf-8')
   const replacers = initReplacers([
     replaceExportMain,
     replaceImportMain,
     replaceBrokenModulePrefix,
     replaceModuleTypeRefs,
     replaceEmptyLines,
-    replaceLocalModulesScope
+    replaceLocalModulesScope,
   ], {prefix, dtsData})
 
   const {from, to} = splitReplacers(replacers)
@@ -49,7 +49,7 @@ export const getRinfConfig = ({dts, prefix}: IRunnerOpts): ReplaceInFileConfig =
   return {
     files: dtsPath,
     from,
-    to
+    to,
   }
 }
 
