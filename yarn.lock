@@ -1274,6 +1274,21 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@qiwi/license@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@qiwi/license/-/license-1.1.2.tgz#c736ec00f02c9559f176976efe7b4021b77d3e6c"
+  integrity sha512-BcwMInsoGw5fRj0BExpTc2+BlnDBbJID22B4GzY9w542KI6FJ2DYVFwfG9KJN4QGZKX9Fk+v/hBntbBHwnBqrg==
+  dependencies:
+    "@qiwi/substrate" "^1.18.12"
+    "@types/lodash" "^4.14.149"
+    "@types/meow" "^5.0.0"
+    "@types/read-pkg" "^5.1.0"
+    find-git-root "^1.0.4"
+    lodash "^4.17.15"
+    meow "^6.0.1"
+    read-pkg "^5.2.0"
+    tslib "^1.11.1"
+
 "@qiwi/semantic-release-gh-pages-plugin@^1.16.0":
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/@qiwi/semantic-release-gh-pages-plugin/-/semantic-release-gh-pages-plugin-1.16.0.tgz#f7d0d039626b1e5feab60b829b7adfe360f8348d"
@@ -1314,7 +1329,7 @@
   resolved "https://registry.yarnpkg.com/@qiwi/substrate-types/-/substrate-types-1.38.0.tgz#db83f23a3a8f818f3bd9df25ae898d1c6d659bdf"
   integrity sha512-hD3PbYrQZkhKD68aW3aI2XOOHDa8iqRh5SQP9aOsAE0oqGdJxjF8g0jFsB6jQuUOEf3YFOJEA4GBexiu8mfNLg==
 
-"@qiwi/substrate@^1.18.26":
+"@qiwi/substrate@^1.18.12", "@qiwi/substrate@^1.18.26":
   version "1.18.26"
   resolved "https://registry.yarnpkg.com/@qiwi/substrate/-/substrate-1.18.26.tgz#787e933358403ee3dba34cae9fb1490078d54861"
   integrity sha512-/QAzzyBNgJFugFJfdHH9xAdarBSUkJerfeTe12AagnEkljLnffNVmbulmBFBP8Aqpzj1G9Xo5nQhOLV2k8b72A==
@@ -1602,7 +1617,7 @@
     jest-diff "^25.2.1"
     pretty-format "^25.2.1"
 
-"@types/lodash@^4.14.150":
+"@types/lodash@^4.14.149", "@types/lodash@^4.14.150":
   version "4.14.150"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.150.tgz#649fe44684c3f1fcb6164d943c5a61977e8cf0bd"
   integrity sha512-kMNLM5JBcasgYscD9x/Gvr6lTAv2NVgsKtet/hm93qMyf/D1pt+7jeEZklKJKxMVmXjxbRVQQGfqDSfipYCO6w==
@@ -6203,7 +6218,7 @@ meow@^5.0.0:
     trim-newlines "^2.0.0"
     yargs-parser "^10.0.0"
 
-meow@^6.1.1:
+meow@^6.0.1, meow@^6.1.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/meow/-/meow-6.1.1.tgz#1ad64c4b76b2a24dfb2f635fddcadf320d251467"
   integrity sha512-3YffViIt2QWgTy6Pale5QpopX/IvU3LPL03jOTqp6pGj3VjesdO/U8CuHMKpnQr4shCNCM5fd5XFFvIIl6JBHg==
