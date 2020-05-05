@@ -4,7 +4,7 @@
   "description": "Util toolset to produce TS and Flow libdefs for Qiwi OSS projects",
   "source": "src/main/ts/index.ts",
   "bin": {
-    "libdef": "target/es5/cli.js"
+    "libdeffix": "target/es5/cli.js"
   },
   "main": "target/bundle/libdefkit.js",
   "module": "target/bundle/libdefkit.mjs",

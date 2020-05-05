@@ -1,4 +1,5 @@
 import {resolve} from 'path'
+import assert from 'assert'
 import {readFileSync} from 'fs'
 import {
   ReplaceInFileConfig,
@@ -21,6 +22,10 @@ import {logger} from './logger'
 import {IReplacer, IRunnerOpts} from './interface'
 
 export const rinf = (opts: IRunnerOpts) => {
+  const {dts, prefix} = opts
+  assert(!!dts, '`--dts` file path should be specified')
+  assert(!!prefix, 'entry point `--prefix` should be specified')
+
   const cfg = getRinfConfig(opts)
   const result: ReplaceResult[] = replaceInFileSync(cfg)
 

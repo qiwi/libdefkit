@@ -1,1 +1,1 @@
-export * from './fix'
+export * from './rinf'

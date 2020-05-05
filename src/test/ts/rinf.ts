@@ -1,6 +1,6 @@
 import {resolve} from 'path'
 import {copyFileSync, readFileSync} from 'fs'
-import {IReplacer} from '../../main/ts/interface'
+import {IReplacer, IRunnerOpts} from '../../main/ts/interface'
 import {
   rinf,
   getRinfConfig,
@@ -35,17 +35,30 @@ describe('rinf', () => {
     })
   })
 
-  it('#rinf modifies target file', () => {
-    copyFileSync(inputDtsPath, tempDtsPath)
+  describe('#rinf', () => {
+    it('asserts `prefix` option', () => {
+      expect(() => rinf({dts: tempDtsPath} as IRunnerOpts))
+        .toThrow('entry point `--prefix` should be specified')
+    })
 
-    expect(readFileSync(tempDtsPath, 'utf-8')).toBe(readFileSync(inputDtsPath, 'utf-8'))
+    it('asserts `dts` option', () => {
+      expect(() => rinf({prefix: 'test'} as IRunnerOpts))
+        .toThrow('`--dts` file path should be specified')
+    })
 
-    const dts = tempDtsPath
-    const prefix = '@qiwi/decorator-utils/target/es5'
-    const cxt = {dts, prefix}
+    it('modifies target file', () => {
+      copyFileSync(inputDtsPath, tempDtsPath)
 
-    rinf(cxt)
+      expect(readFileSync(tempDtsPath, 'utf-8')).toBe(readFileSync(inputDtsPath, 'utf-8'))
 
-    expect(readFileSync(tempDtsPath, 'utf-8')).toBe(readFileSync(outputDtsPath, 'utf-8'))
+      const dts = tempDtsPath
+      const prefix = '@qiwi/decorator-utils/target/es5'
+      const cxt = {dts, prefix}
+
+      rinf(cxt)
+
+      expect(readFileSync(tempDtsPath, 'utf-8')).toBe(readFileSync(outputDtsPath, 'utf-8'))
+    })
   })
+
 })
