@@ -1,13 +1,19 @@
 import {resolve} from 'path'
+import {copyFileSync, readFileSync} from 'fs'
 import {IReplacer} from '../../main/ts/interface'
 import {
+  rinf,
   getRinfConfig,
   splitReplacers,
 } from '../../main/ts/rinf'
 
 describe('rinf', () => {
+  const inputDtsPath = resolve(__dirname, '../fixtures/input.d.ts')
+  const outputDtsPath = resolve(__dirname, '../fixtures/output.d.ts')
+  const tempDtsPath = resolve(__dirname, '../temp/index.d.ts')
+
   it('#getRinfConfig', () => {
-    const dts = resolve(__dirname, '../fixtures/input.d.ts')
+    const dts = inputDtsPath
     const prefix = '@qiwi/decorator-utils/target/es5'
     const cxt = {dts, prefix}
     const cfg = getRinfConfig(cxt)
@@ -27,5 +33,19 @@ describe('rinf', () => {
       from: ['1', '2'],
       to: ['11', '22'],
     })
+  })
+
+  it('#rinf modifies target file', () => {
+    copyFileSync(inputDtsPath, tempDtsPath)
+
+    expect(readFileSync(tempDtsPath, 'utf-8')).toBe(readFileSync(inputDtsPath, 'utf-8'))
+
+    const dts = tempDtsPath
+    const prefix = '@qiwi/decorator-utils/target/es5'
+    const cxt = {dts, prefix}
+
+    rinf(cxt)
+
+    expect(readFileSync(tempDtsPath, 'utf-8')).toBe(readFileSync(outputDtsPath, 'utf-8'))
   })
 })
