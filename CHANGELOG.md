@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/qiwi/libdefkit/compare/v1.0.0...v1.0.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* **cli:** add bin prefix ([72fa103](https://github.com/qiwi/libdefkit/commit/72fa1035aa6cc739d44db1189cd9359eea1f455b))
+
 # 1.0.0 (2020-05-05)
 
 
