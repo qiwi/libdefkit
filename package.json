@@ -28,7 +28,7 @@
     "jest": "jest -w 1 --config=jest.config.json",
     "lint": "tslint -p tsconfig.test.json src/**/*.ts",
     "lint:fix": "yarn lint --fix",
-    "test": "yarn lint && yarn jest",
+    "test": "yarn lint && mkdir src/test/temp && yarn jest",
     "clean": "rimraf target typings",
     "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn libdef && yarn docs && yarn uglify",
     "build:es5": "mkdir -p target/es5 && tsc -p tsconfig.es5.json",
