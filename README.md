@@ -1,4 +1,4 @@
-# libdefkit
+# @qiwi/libdefkit
 Util toolset to produce single-file TS and Flow libdefs for Qiwi OSS projects
 
 # Install

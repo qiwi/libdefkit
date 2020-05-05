@@ -1,3 +1,6 @@
+/** @module @qiwi/libdefkit */
+/** */
+
 import {resolve} from 'path'
 import assert from 'assert'
 import {readFileSync} from 'fs'

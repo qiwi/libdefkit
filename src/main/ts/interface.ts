@@ -1,3 +1,6 @@
+/** @module @qiwi/libdefkit */
+/** */
+
 import {From, To} from 'replace-in-file'
 
 export type IReplacer = {

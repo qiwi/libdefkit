@@ -1,3 +1,6 @@
+/** @module @qiwi/libdefkit */
+/** */
+
 import {IReplacer, IReplacerFactory, IReplacerContext} from './interface'
 
 export const initReplacers = (replacers: Array<IReplacer | IReplacerFactory>, cxt: IReplacerContext): IReplacer[] =>
