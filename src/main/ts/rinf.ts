@@ -34,7 +34,7 @@ export const getRinfConfig = ({dts, prefix}: IRunnerOpts): ReplaceInFileConfig =
   }
 }
 
-const splitReplacers = (replacers: IReplacer[]) => replacers
+export const splitReplacers = (replacers: IReplacer[]) => replacers
   .reduce<{from: From[], to: To[]}>((m, {from, to}) => {
     m.from.push(from)
     m.to.push(to)
