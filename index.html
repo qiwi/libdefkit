@@ -67,15 +67,16 @@
 				</a>
 				<p>Util toolset to produce single-file TS and Flow libdefs for Qiwi OSS projects</p>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
-					<h1>Install</h1>
+					<h2>Install</h2>
 				</a>
 				<pre><code class="language-shell">yarn add @qiwi/libdefkit -D</code></pre>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h1>Usage</h1>
+					<h2>Usage</h2>
 				</a>
+				<p>Insert script to <code>package.json</code>.</p>
 				<pre><code class="language-json">{
   <span class="hljs-attr">"scripts"</span>: {
-    <span class="hljs-attr">"build:libdef"</span>: <span class="hljs-string">"dtsgen --project ./ --out typings/index.d.ts --prefix @qiwi/libdefkit/target/es5 --name @qiwi/libdefkit --main @qiwi/libdefkit/target/es5/index --moduleResolution node &amp;&amp; libdeffix --dts=./typings/index.d.ts --prefix=@qiwi/libdefkit/target/es5 &amp;&amp; flowgen typings/index.d.ts --output-file flow-typed/index.flow.js"</span>
+    <span class="hljs-attr">"build:libdef"</span>: <span class="hljs-string">"dts-generator --project ./ --out typings/index.d.ts --prefix @qiwi/libdefkit/target/es5 --name @qiwi/libdefkit --main @qiwi/libdefkit/target/es5/index --moduleResolution node &amp;&amp; libdeffix --dts=./typings/index.d.ts --prefix=@qiwi/libdefkit/target/es5 &amp;&amp; flowgen typings/index.d.ts --output-file flow-typed/index.flow.js"</span>
   }
 }</code></pre>
 			</div>
