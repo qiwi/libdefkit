@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 import meow from 'meow'
-import {rinf} from '.'
+import {rinf} from './rinf'
+import {IRunnerOpts} from './interface'
 
 const cli = meow(`
   Usage
@@ -26,4 +27,4 @@ const cli = meow(`
   },
 })
 
-rinf(cli.flags)
+rinf(cli.flags as IRunnerOpts)
