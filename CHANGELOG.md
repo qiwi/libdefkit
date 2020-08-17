@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/qiwi/libdefkit/compare/v1.0.2...v1.0.3) (2020-08-17)
+
+
+### Performance Improvements
+
+* **package:** remove some deprecated deps ([305ab32](https://github.com/qiwi/libdefkit/commit/305ab3293e51e1e30017f69b6a8f379c5c78f052))
+
 ## [1.0.2](https://github.com/qiwi/libdefkit/compare/v1.0.1...v1.0.2) (2020-05-17)
 
 
