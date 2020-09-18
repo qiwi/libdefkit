@@ -7,6 +7,7 @@ import {
   replaceModuleTypeRefs,
   replaceEmptyLines,
   replaceLocalModulesScope,
+  replaceBashDirective,
 } from '../../main/ts/replacer'
 
 describe('replacer', () => {
@@ -73,6 +74,14 @@ describe('replacer', () => {
       replaceEmptyLines,
       `
 `,
+      '',
+    )
+  })
+
+  it('#replaceBashDirecive', () => {
+    assertReplacement(
+      replaceBashDirective,
+      '#!/usr/bin/env node\n',
       '',
     )
   })

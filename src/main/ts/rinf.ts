@@ -20,6 +20,7 @@ import {
   replaceModuleTypeRefs,
   replaceEmptyLines,
   replaceLocalModulesScope,
+  replaceBashDirective,
 } from './replacer'
 import {logger} from './logger'
 import {IReplacer, IRunnerOpts} from './interface'
@@ -43,6 +44,7 @@ export const getRinfConfig = ({dts, prefix}: IRunnerOpts): ReplaceInFileConfig =
     replaceImportMain,
     replaceBrokenModulePrefix,
     replaceModuleTypeRefs,
+    replaceBashDirective,
     replaceEmptyLines,
     replaceLocalModulesScope,
   ], {prefix, dtsData})
