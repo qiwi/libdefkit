@@ -81,7 +81,7 @@ describe('replacer', () => {
   it('#replaceBashDirecive', () => {
     assertReplacement(
       replaceBashDirective,
-      '#!/usr/bin/env node',
+      '#!/usr/bin/env node\n',
       '',
     )
   })

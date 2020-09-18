@@ -59,6 +59,6 @@ export const replaceLocalModulesScope: IReplacerFactory = ({dtsData, prefix}) =>
 }
 
 export const replaceBashDirective: IReplacer = {
-  from: /.*#!.+/,
+  from: /[\t\s]*#!.+\n/gm,
   to: '',
 }
