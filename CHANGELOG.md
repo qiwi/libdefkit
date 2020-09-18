@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/qiwi/libdefkit/compare/v1.0.3...v1.1.0) (2020-09-18)
+
+
+### Features
+
+* added bash directive replacer ([#8](https://github.com/qiwi/libdefkit/issues/8)) ([be43981](https://github.com/qiwi/libdefkit/commit/be4398196a755e047c400f39fdc7a2d7daa378f8))
+
 ## [1.0.3](https://github.com/qiwi/libdefkit/compare/v1.0.2...v1.0.3) (2020-08-17)
 
 
