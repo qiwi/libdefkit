@@ -4,18 +4,24 @@ import fs from 'fs-extra'
 import chalk from 'chalk'
 import {sync as pkgDir} from 'pkg-dir'
 import {sync as findUp} from 'find-up'
+import {ICmdInvokeOptions} from './inteface'
 
-export const invoke = (cmd: string, args: string[], cwd: string, silent= false, inherit = true) => {
-  !silent && console.log(chalk.bold('invoke'), cmd, ...args)
+export const STDIO_INHERIT: StdioOptions = ['inherit', 'inherit', 'inherit']
+export const STDIO_NULL: StdioOptions = [null, null, null]
 
-  const stdio: StdioOptions = inherit ? ['inherit', 'inherit', 'inherit'] : [null, null, null]
-  const result = cp.spawnSync(cmd, args, {cwd, stdio})
+export const invoke = ({cmd, args = [], cwd = process.cwd(), silent= false, closest, stdio = STDIO_INHERIT}: ICmdInvokeOptions) => {
+  const _cmd = closest ? getClosestBin(cmd) : cmd
+  const _args = formatArgs(args)
+
+  !silent && console.log(chalk.bold('invoke'), _cmd, ..._args)
+
+  const result = cp.spawnSync(_cmd, _args, {cwd, stdio})
 
   if (result.error || result.status) {
     throw result
   }
 
-  return result.stdout?.toString().trim()
+  return result.stdout?.toString().trim() ?? result.stdout
 }
 
 const checkValue = (key: string, value: any, omitlist: any[], picklist: any[]): boolean =>
@@ -23,7 +29,7 @@ const checkValue = (key: string, value: any, omitlist: any[], picklist: any[]): 
 
 const formatFlag = (key: string): string => (key.length === 1 ? '-' : '--') + key
 
-export const formatFlags = (flags: Record<string, any>, ...picklist: string[]): string[] =>
+export const formatFlags = (flags: Record<string, any>= {}, picklist: string[] = []): string[] =>
   Object.keys(flags).reduce<string[]>((memo, key: string) => {
     const omitlist = ['_', '--']
     const value = flags[key]
@@ -40,12 +46,12 @@ export const formatFlags = (flags: Record<string, any>, ...picklist: string[]): 
     return memo
   }, [])
 
-export const getClosestBin = (cmd: string): string => {
-  const pkgRoot = pkgDir(__dirname) + ''
+export const formatArgs = (args: Record<string, any> | string[]= {}, picklist?: string[]): string[] =>
+  Array.isArray(args) ? args : formatFlags(args, picklist)
 
-  return findUp(dir => {
+export const getClosestBin = (cmd: string, cwd: string = pkgDir(__dirname) + ''): string =>
+  findUp(dir => {
     const ref = resolve(dir, 'node_modules', '.bin', cmd)
 
     return fs.existsSync(ref) ? ref : undefined
-  }, {cwd: pkgRoot}) + ''
-}
+  }, {cwd}) || cmd
