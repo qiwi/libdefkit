@@ -38,6 +38,7 @@ export const pipeline: IExecPipe[] = [
   clear,
   dtsgen,
   flowgen,
+  clear,
 ]
 
 export const execute = (flags: ICliFlags) => pipeline.reduce((ctx, pipe) => pipe(ctx) || ctx, flags as IContext)
