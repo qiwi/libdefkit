@@ -4,7 +4,7 @@ import fs from 'fs-extra'
 import chalk from 'chalk'
 import {sync as pkgDir} from 'pkg-dir'
 import {sync as findUp} from 'find-up'
-import {ICmdInvokeOptions} from './inteface'
+import {ICmdInvokeOptions} from './interface'
 
 export const STDIO_INHERIT: StdioOptions = ['inherit', 'inherit', 'inherit']
 export const STDIO_NULL: StdioOptions = [null, null, null]
@@ -55,3 +55,6 @@ export const getClosestBin = (cmd: string, cwd: string = pkgDir(__dirname) + '')
 
     return fs.existsSync(ref) ? ref : undefined
   }, {cwd}) || cmd
+
+export const readJson = (path: string): any =>
+  JSON.parse(fs.readFileSync(path).toString('utf-8').trim())

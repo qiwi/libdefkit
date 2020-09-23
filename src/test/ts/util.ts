@@ -1,14 +1,14 @@
 import {resolve} from 'path'
+import fs from 'fs-extra'
+import cp from 'child_process'
 import parseArguments from 'yargs-parser'
 import {
   formatArgs,
   invoke,
   getClosestBin,
   STDIO_INHERIT, STDIO_NULL,
-} from '../../../main/ts/libdefkit/util'
-import cp from 'child_process'
-import fs from 'fs-extra'
-import {ICmdInvokeOptions} from '../../../main/ts/libdefkit/inteface'
+} from '../../main/ts/util'
+import {ICmdInvokeOptions} from '../../main/ts/interface'
 
 jest.mock('child_process')
 jest.mock('fs-extra')
@@ -46,7 +46,7 @@ describe('util', () => {
       [
         'uses local (closest) cmd ref',
         {cmd: 'tsc', closest: true},
-        resolve(__dirname, '../../../../node_modules/.bin/tsc'),
+        resolve(__dirname, '../../../node_modules/.bin/tsc'),
       ],
       [
         'handles flags (record) as args',
@@ -128,8 +128,8 @@ describe('util', () => {
   describe('#getClosestBin', () => {
     it('properly resolves cmd refs', () => {
       const cases: [string, string | undefined][] = [
-        ['npm', resolve(__dirname, '../../../../node_modules/.bin/npm')],
-        ['tsc', resolve(__dirname, '../../../../node_modules/.bin/tsc')],
+        ['npm', resolve(__dirname, '../../../node_modules/.bin/npm')],
+        ['tsc', resolve(__dirname, '../../../node_modules/.bin/tsc')],
         ['not-found', 'not-found'],
       ]
       cases.forEach(([cmd, ref]) => {

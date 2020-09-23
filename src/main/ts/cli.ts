@@ -1,30 +1,37 @@
 #!/usr/bin/env node
 
 import meow from 'meow'
-import {rinf} from './rinf'
-import {IRunnerOpts} from './interface'
+import {execute} from './libdefkit'
 
 const cli = meow(`
-  Usage
-    $ libdeffix --dts {dts file path} --prefix {entry point prefix}
-
-  Options
-    --dts       Target *.d.ts file path
-    --prefix    Entry point path prefix
-
-  Examples
-    $ libdeffix --dts ./typings/index.d.ts --prefix @qiwi/decorator-utils/target/es5
-    $ libdeffix --version
-    $ libdeffix --help
+    Usage:
+      libdefkit --out=some/path/
+    Options
+      --out, path to generated file
+      --cwd, working dir path
+      --tsconfig
+      --entry, alias entry (<pkgName>/target/es5/index by default)
+      --dtsOut, dts output (typings/index.d.ts by default)
+      --flowOut, flow output (flow-typed/index.flow.js by default)
 `, {
   flags: {
-    dts: {
+    out: {
       type: 'string',
     },
-    prefix: {
+    cwd: {
       type: 'string',
+    },
+    dtsOut: {
+      type: 'string',
+    },
+    flowOut: {
+      type: 'string',
+    },
+    tsconfig: {
+      type: 'string',
+      isMultiple: true,
     },
   },
 })
 
-rinf(cli.flags as IRunnerOpts)
+execute(cli.flags)
