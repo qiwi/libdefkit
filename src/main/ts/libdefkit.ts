@@ -1,3 +1,6 @@
+/** @module @qiwi/libdefkit */
+/** */
+
 import findCacheDir from 'find-cache-dir'
 import fs from 'fs-extra'
 import {join} from 'path'

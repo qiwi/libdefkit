@@ -1,3 +1,6 @@
+/** @module @qiwi/libdefkit */
+/** */
+
 import {resolve} from 'path'
 import cp, {StdioOptions} from 'child_process'
 import fs from 'fs-extra'
@@ -55,6 +58,3 @@ export const getClosestBin = (cmd: string, cwd: string = pkgDir(__dirname) + '')
 
     return fs.existsSync(ref) ? ref : undefined
   }, {cwd}) || cmd
-
-export const readJson = (path: string): any =>
-  JSON.parse(fs.readFileSync(path).toString('utf-8').trim())
