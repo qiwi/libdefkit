@@ -1,3 +1,20 @@
+# [2.0.0](https://github.com/qiwi/libdefkit/compare/v1.1.0...v2.0.0) (2020-09-23)
+
+
+### Code Refactoring
+
+* migrate to dts-bundle ([d7d32cf](https://github.com/qiwi/libdefkit/commit/d7d32cfaba65e07a26585957aeed7e58cfbabffa)), closes [#9](https://github.com/qiwi/libdefkit/issues/9) [#10](https://github.com/qiwi/libdefkit/issues/10)
+
+
+### Performance Improvements
+
+* rm temp files after each run ([eeb7c73](https://github.com/qiwi/libdefkit/commit/eeb7c73f8a515ddba2aadd291ad71bea379c479b))
+
+
+### BREAKING CHANGES
+
+* cli api has been completely changed
+
 # [1.1.0](https://github.com/qiwi/libdefkit/compare/v1.0.3...v1.1.0) (2020-09-18)
 
 
