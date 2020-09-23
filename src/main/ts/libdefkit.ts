@@ -16,7 +16,7 @@ export const normalize: IExecPipe = (flags: ICliFlags) => {
   const cwd = flags.cwd || process.cwd()
   const cache = findCacheDir({name: '@qiwi/libdefkit'}) + ''
   const name = fs.readJsonSync(join(cwd, 'package.json')).name
-  const entry = flags.entry ?? `${name}/target/es5/index`
+  const entry = flags.entry ?? `${name}/target/es5`
   const dtsOut = flags.dtsOut ?? join(cwd, 'typings/index.d.ts')
   const flowOut = flags.flowOut ?? join(cwd, 'flow-typed/index.flow.js')
 
