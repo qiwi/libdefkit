@@ -35,7 +35,8 @@
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
     "docs": "typedoc --readme README.md --tsconfig tsconfig.json src/main --ignoreCompilerErrors && touch ./docs/.nojekyll || exit 0",
     "uglify": "for f in $(find target -name '*.js'); do short=${f%.js}; terser -c -m -o $short.js -- $f; done",
-    "postupdate": "yarn && npx yarn-audit-fix && yarn build && yarn test"
+    "postupdate": "yarn && npx yarn-audit-fix && yarn build && yarn test",
+    "publish:beta": "npm publish --no-git-tag-version --tag beta"
   },
   "repository": {
     "type": "git",
@@ -57,7 +58,7 @@
     "@types/read-pkg": "^5.1.0",
     "@types/yargs-parser": "^15.0.0",
     "chalk": "^4.1.0",
-    "dts-bundle": "^0.7.3",
+    "@antongolub/dts-bundle": "^0.7.4-beta.0",
     "find-cache-dir": "^3.3.1",
     "find-up": "^5.0.0",
     "flowgen": "1.11.0",
