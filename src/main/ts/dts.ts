@@ -29,8 +29,6 @@ export const generate = (tsconfig: string, tempDir: string, name: string) => {
   }})
 }
 
-// export const bundle = (name: string, baseDir: string) => {}
-
 export const alias = (from: string, to: string, tempDir: string) => {
   const bundleDir = join(tempDir, 'bundle')
   const bundlePath = join(bundleDir, 'entry.d.ts')
