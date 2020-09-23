@@ -23,6 +23,7 @@
     "json",
     "node"
   ],
+  "snapshotResolver": "<rootDir>/jest.snapshot.js",
   "transform": {
     "^.+\\.(ts|tsx)$": "ts-jest"
   },
