@@ -5,10 +5,7 @@
   "description": "Util toolset to produce single-file TS and Flow libdefs for Qiwi OSS projects",
   "source": "src/main/ts/index.ts",
   "bin": {
-    "libdeffix": "./target/es5/cli.js",
-    "flowgen": "./node_modules/flowgen/lib/cli/index.js",
-    "dts-generator": "./node_modules/dts-generator/bin/dts-generator",
-    "dtsgen": "./node_modules/dts-generator/bin/dts-generator"
+    "libdefkit": "./target/es5/cli.js"
   },
   "main": "./target/es5/index.js",
   "types": "typings/index.d.ts",
@@ -24,24 +21,21 @@
   ],
   "scripts": {
     "jest": "jest -w 1 --config=jest.config.json",
-    "lint": "tslint -p tsconfig.test.json src/**/*.ts",
+    "lint": "tslint -p tsconfig.test.json src/**/*.ts -e \"**/temp/**\"",
     "lint:fix": "yarn lint --fix",
     "test": "yarn lint && mkdir -p src/test/temp && yarn jest",
-    "clean": "rimraf target typings",
+    "clean": "rimraf target typings flow-typed",
     "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn build:libdef && yarn docs && yarn uglify",
-    "build:es5": "mkdir -p target/es5 && tsc -p tsconfig.es5.json",
-    "build:es6": "mkdir -p target/es6 && tsc -p tsconfig.es6.json",
+    "build:es5": "mkdirp target/es5 && tsc -p tsconfig.es5.json",
+    "build:es6": "mkdirp target/es6 && tsc -p tsconfig.es6.json",
     "build:ts": "cp -r src/main/ts/ target/ts/",
-    "build:libdef": "yarn dtsgen && yarn libdeffix && yarn flowgen",
-    "dtsgen": "dts-generator --project ./ --out typings/index.d.ts --prefix @qiwi/libdefkit/target/es5 --name @qiwi/libdefkit --main @qiwi/libdefkit/target/es5/index --moduleResolution node",
-    "flowgen": "flowgen typings/index.d.ts --output-file flow-typed/index.flow.js",
-    "libdeffix": "node -r esm ./target/es6/cli.js --dts=./typings/index.d.ts --prefix=@qiwi/libdefkit/target/es5",
+    "build:libdef": "node -r esm ./target/es6/cli.js --tsconfig=tsconfig.es5.json --tsconfig=tsconfig.es6.json",
     "test:report": "yarn test && yarn push:report",
     "push:report": "yarn coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
     "docs": "typedoc --readme README.md --tsconfig tsconfig.json src/main --ignoreCompilerErrors && touch ./docs/.nojekyll || exit 0",
     "uglify": "for f in $(find target -name '*.js'); do short=${f%.js}; terser -c -m -o $short.js -- $f; done",
-    "postupdate": "yarn && yarn build && yarn test"
+    "postupdate": "yarn && npx yarn-audit-fix && yarn build && yarn test"
   },
   "repository": {
     "type": "git",
@@ -64,14 +58,12 @@
     "@types/yargs-parser": "^15.0.0",
     "chalk": "^4.1.0",
     "dts-bundle": "^0.7.3",
-    "dts-generator": "^3.0.0",
     "find-cache-dir": "^3.3.1",
     "find-up": "^5.0.0",
     "flowgen": "1.11.0",
     "fs-extra": "^9.0.1",
     "meow": "^7.1.1",
     "mkdirp": "^1.0.4",
-    "replace-in-file": "^6.1.0",
     "tslib": "^2.0.1",
     "yargs-parser": "^20.2.0"
   },
