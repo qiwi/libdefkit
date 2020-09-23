@@ -1,5 +1,10 @@
 {
   "extends": "tslint-config-qiwi",
+  "linterOptions": {
+    "exclude": [
+      "src/test/temp"
+    ]
+  },
   "rules": {
     "await-promise": [true, "Bluebird", "IPromise"]
   }
