@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/qiwi/libdefkit/compare/v2.0.0...v2.0.1) (2020-09-23)
+
+
+### Bug Fixes
+
+* fix alias path ([a97422a](https://github.com/qiwi/libdefkit/commit/a97422a406dfd6d2014eb9112623ee2cdb7d8cd3))
+* fix dynamic type imports ([f4868f6](https://github.com/qiwi/libdefkit/commit/f4868f6387292c36f5d6f0a4462b63e05ee56bb1))
+
 # [2.0.0](https://github.com/qiwi/libdefkit/compare/v1.1.0...v2.0.0) (2020-09-23)
 
 
