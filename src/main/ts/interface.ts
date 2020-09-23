@@ -1,3 +1,6 @@
+/** @module @qiwi/libdefkit */
+/** */
+
 import {StdioOptions} from 'child_process'
 
 export type ICmdInvokeOptions = {

@@ -1,3 +1,6 @@
+/** @module @qiwi/libdefkit */
+/** */
+
 import {invoke} from './util'
 import fs from 'fs-extra'
 import {join} from 'path'
