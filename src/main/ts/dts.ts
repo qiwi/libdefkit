@@ -13,7 +13,8 @@ export const generate = (tsconfig: string, tempDir: string, name: string) => {
   const bundleDir = join(tempDir, 'bundle')
   const bundlePath = join(bundleDir, cfg?.compilerOptions?.target + '.d.ts')
 
-  invoke({cmd: 'mkdirp', args: [genDir, bundleDir]})
+  fs.ensureDirSync(genDir)
+  fs.ensureDirSync(bundleDir)
 
   invoke({cmd: 'tsc', args: {
     p: tsconfig,
