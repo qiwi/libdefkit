@@ -6,7 +6,7 @@ jobs:
     - stage: build
       os: linux
       install: yarn
-      script: skip
+      script: yarn build
       workspaces:
         create:
           name: shared
