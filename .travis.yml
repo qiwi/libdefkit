@@ -5,9 +5,6 @@ jobs:
   include:
     - stage: build
       os: linux
-      before_install:
-        - npm install -g nyc
-        - npm install -g mocha
       install: yarn
       script: skip
       workspaces:
@@ -22,6 +19,12 @@ jobs:
 
     - &test
       stage: test
+      os: windows
+      env: YARN_GPG=no
+      install: yarn
+      script: yarn test
+
+    - <<: *test
       os: linux
       install: skip
       before_script:
@@ -35,13 +38,6 @@ jobs:
         - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
       workspaces:
         use: shared
-    - <<: *test
-      os: windows
-      env: YARN_GPG=no
-      install: yarn
-      before_script: skip
-      script: yarn test
-      after_script: skip
 
     - stage: release
       if: branch = master AND type != pull_request
