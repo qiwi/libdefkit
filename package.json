@@ -36,7 +36,8 @@
     "docs": "typedoc --readme README.md --tsconfig tsconfig.json src/main --ignoreCompilerErrors && touch ./docs/.nojekyll || exit 0",
     "uglify": "for f in $(find target -name '*.js'); do short=${f%.js}; terser -c -m -o $short.js -- $f; done",
     "postupdate": "yarn && npx yarn-audit-fix && yarn build && yarn test",
-    "publish:beta": "npm publish --no-git-tag-version --tag beta"
+    "publish:beta": "npm publish --no-git-tag-version --tag beta",
+    "release": "semantic-release"
   },
   "repository": {
     "type": "git",

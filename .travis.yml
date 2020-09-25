@@ -1,27 +1,53 @@
 language: node_js
-node_js:
-  - '12'
 
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+jobs:
+  include:
+    - stage: build
+      os: linux
+      node_js: 14
+      before_install:
+        - npm install -g nyc
+        - npm install -g mocha
+      install: yarn
+      script: skip
+      workspaces:
+        create:
+          name: shared
+          paths:
+            - node_modules
+            - target
+            - typings
+            - flow-typed
+            - docs
 
-after_script:
-  - ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+    - &test
+      stage: test
+      os: linux
+      install: skip
+      before_script:
+        - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        - chmod +x ./cc-test-reporter
+        - ./cc-test-reporter before-build
+      script:
+        - npm run test:report
+      after_script:
+        - ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
+        - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+      workspaces:
+        use: shared
+    - <<: *test
+      os: windows
+      node_js: 14
+      env: YARN_GPG=no
+      install: yarn
+      before_script: skip
+      script: yarn test
+      after_script: skip
 
-install:
-  - yarn cache clean
-  - yarn
-
-script:
-  - yarn run build
-  - chmod -R 777 target
-  - yarn test:report
-
-deploy:
-  provider: script
-  skip_cleanup: true
-  script:
-    - npx semantic-release
+    - stage: release
+      if: branch = master AND type != pull_request
+      node_js: 14
+      workspaces:
+        use: shared
+      install: skip
+      script: yarn release
