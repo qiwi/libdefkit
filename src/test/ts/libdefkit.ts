@@ -3,8 +3,8 @@ import {resolve, join} from 'path'
 
 describe('libdefkit', () => {
   describe('#execute', () => {
-    fit('returns proper dts bundle', () => {
-      const temp = resolve(__dirname, '../temp')
+    it('returns proper dts bundle', () => {
+      const temp = resolve(__dirname, '..', 'temp')
       const dtsOut = join(temp, 'index.d.ts')
       const flowOut = join(temp, 'index.flow.js')
       const cwd = process.cwd()
