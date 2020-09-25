@@ -12,8 +12,14 @@ import {ICmdInvokeOptions} from './interface'
 export const STDIO_INHERIT: StdioOptions = ['inherit', 'inherit', 'inherit']
 export const STDIO_NULL: StdioOptions = [null, null, null]
 
+export const getCmd = (cmd: string, closest?: boolean, isWin = process.platform === 'win32') => {
+  const _cmd = cmd + (isWin ? '.cmd' : '')
+
+  return closest ? getClosestBin(_cmd) : _cmd
+}
+
 export const invoke = ({cmd, args = [], cwd = process.cwd(), silent= false, closest, stdio = STDIO_INHERIT}: ICmdInvokeOptions) => {
-  const _cmd = closest ? getClosestBin(cmd) : cmd
+  const _cmd = getCmd(cmd, closest)
   const _args = formatArgs(args)
 
   !silent && console.log(chalk.bold('invoke'), _cmd, ..._args)

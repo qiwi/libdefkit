@@ -14,12 +14,14 @@ jest.mock('child_process')
 jest.mock('fs-extra')
 
 describe('util', () => {
+  const dotcmd = process.platform === 'win32' ? '.cmd' : ''
+
   describe('#invoke', () => {
     beforeEach(() => {
       // @ts-ignore
       jest.spyOn(process, 'exit').mockImplementation(() => { /* noop */ })
       // @ts-ignore
-      fs.existsSync.mockImplementation(cmd => cmd !== 'not-found')
+      fs.existsSync.mockImplementation(cmd => cmd !== ('not-found' + dotcmd))
       // @ts-ignore
       cp.spawnSync.mockImplementation((cmd) => {
         const results: Record<string, any> = {
@@ -28,7 +30,7 @@ describe('util', () => {
           null: {status: 0, stdout: null},
         }
 
-        return results[cmd] || results.def
+        return results[cmd.replace(dotcmd, '')] || results.def
       })
     })
     afterEach(jest.clearAllMocks)
@@ -89,7 +91,7 @@ describe('util', () => {
           expect(invoke(opts)).toEqual(expectedResult === null ? expectedResult : expect.any(String))
         }
 
-        expectedCmd && expect(cp.spawnSync).toHaveBeenCalledWith(expectedCmd, expectedArgs, expectedOpts)
+        expectedCmd && expect(cp.spawnSync).toHaveBeenCalledWith(expectedCmd + dotcmd, expectedArgs, expectedOpts)
       })
     })
   })
@@ -133,7 +135,7 @@ describe('util', () => {
         ['not-found', 'not-found'],
       ]
       cases.forEach(([cmd, ref]) => {
-        expect(getClosestBin(cmd)).toBe(ref)
+        expect(getClosestBin(cmd + dotcmd)).toBe(ref + dotcmd)
       })
     })
   })
