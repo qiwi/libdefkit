@@ -7,7 +7,6 @@ describe('libdefkit', () => {
       const temp = resolve(__dirname, '..', 'temp')
       const dtsOut = join(temp, 'index.d.ts')
       const flowOut = join(temp, 'index.flow.js')
-      const cwd = process.cwd()
       const result = execute({
         tsconfig: [
           'tsconfig.es5.json',
@@ -16,7 +15,11 @@ describe('libdefkit', () => {
         dtsOut,
         flowOut,
       })
-      const snap = JSON.parse(JSON.stringify(result).replace(new RegExp(cwd, 'g'), '<cwd>'))
+
+      const cwd = JSON.stringify(process.cwd()).slice(1, -1)
+      const snap = JSON.parse(JSON.stringify(result)
+        .split(cwd).join('<cwd>')
+        .replace(/\\\\/g, '/'))
 
       expect(snap).toMatchSnapshot()
     })
