@@ -1,3 +1,20 @@
+# [2.1.0](https://github.com/qiwi/libdefkit/compare/v2.0.1...v2.1.0) (2020-09-26)
+
+
+### Bug Fixes
+
+* add .cmd to win invokes ([98fa063](https://github.com/qiwi/libdefkit/commit/98fa063e099d6e6836070624eec6087753cb1dbf))
+
+
+### Features
+
+* add win support ([3266eb1](https://github.com/qiwi/libdefkit/commit/3266eb19b0dbaab5a76785e9865783ea74d20099))
+
+
+### Performance Improvements
+
+* **package:** up deps ([90cf835](https://github.com/qiwi/libdefkit/commit/90cf8351287e2a0b2366b523ec8b2f6aab90a133))
+
 ## [2.0.1](https://github.com/qiwi/libdefkit/compare/v2.0.0...v2.0.1) (2020-09-23)
 
 
