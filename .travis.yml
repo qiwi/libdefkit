@@ -1,6 +1,9 @@
 language: node_js
 node_js: 14
 
+install: skip
+script: skip
+
 jobs:
   include:
     - stage: build
@@ -19,12 +22,6 @@ jobs:
 
     - &test
       stage: test
-      os: windows
-      env: YARN_GPG=no
-      install: yarn
-      script: yarn test
-
-    - <<: *test
       os: linux
       install: skip
       before_script:
@@ -38,6 +35,16 @@ jobs:
         - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
       workspaces:
         use: shared
+
+    - <<: *test
+      if: type = pull_request
+      os: windows
+      workspaces:
+      env: YARN_GPG=no
+      install: yarn
+      before_script: skip
+      script: yarn test
+      after_script: skip
 
     - stage: release
       if: branch = master AND type != pull_request
