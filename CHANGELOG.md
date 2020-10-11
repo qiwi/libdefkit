@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/qiwi/libdefkit/compare/v2.1.0...v2.1.1) (2020-10-11)
+
+
+### Bug Fixes
+
+* **deps:** up deps, fix some vunerabilities ([de6f1d7](https://github.com/qiwi/libdefkit/commit/de6f1d77c099196b0138949c621ab61ecb1f5646))
+
 # [2.1.0](https://github.com/qiwi/libdefkit/compare/v2.0.1...v2.1.0) (2020-09-26)
 
 
