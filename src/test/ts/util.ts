@@ -130,7 +130,7 @@ describe('util', () => {
   describe('#getClosestBin', () => {
     it('properly resolves cmd refs', () => {
       const cases: [string, string | undefined][] = [
-        ['npm', resolve(__dirname, '../../../node_modules/.bin/npm')],
+        ['npm', 'npm'],
         ['tsc', resolve(__dirname, '../../../node_modules/.bin/tsc')],
         ['not-found', 'not-found'],
       ]
