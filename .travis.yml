@@ -52,4 +52,4 @@ jobs:
       workspaces:
         use: shared
       install: skip
-      script: npx -p @qiwi/semrel-toolkit semrel
+      script: npx -p @qiwi/semrel-toolkit semrel -e @qiwi/semrel-config
