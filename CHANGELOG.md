@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/qiwi/libdefkit/compare/v2.1.2...v2.1.3) (2020-10-29)
+
+
+### Performance Improvements
+
+* up meow version to 8 ([1684404](https://github.com/qiwi/libdefkit/commit/16844042e16fec780ba182be94fd604dd81f3129))
+
 ## [2.1.2](https://github.com/qiwi/libdefkit/compare/v2.1.1...v2.1.2) (2020-10-28)
 
 
