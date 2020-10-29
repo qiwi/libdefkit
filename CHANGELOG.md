@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/qiwi/libdefkit/compare/v2.1.3...v2.1.4) (2020-10-29)
+
+
+### Performance Improvements
+
+* migrate to @qiwi/dts-bundle ([b07c0d0](https://github.com/qiwi/libdefkit/commit/b07c0d02061319b9796202a46e39c0da9463e51d))
+
 ## [2.1.3](https://github.com/qiwi/libdefkit/compare/v2.1.2...v2.1.3) (2020-10-29)
 
 
