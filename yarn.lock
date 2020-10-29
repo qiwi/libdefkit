@@ -2,20 +2,6 @@
 # yarn lockfile v1
 
 
-"@antongolub/dts-bundle@^0.7.4-beta.1":
-  version "0.7.4-beta.1"
-  resolved "https://registry.yarnpkg.com/@antongolub/dts-bundle/-/dts-bundle-0.7.4-beta.1.tgz#c1957dc47d91d9c42265bc4f89e914d731712831"
-  integrity sha512-8RP9Nh2jdKWkL3zXU0cIcO/7U+CcFtYUOu6Vp21fJL/8gdomLogpXXwe1+Lgm609Un9TAKWtQ76cPMEkH4H7ig==
-  dependencies:
-    "@types/detect-indent" "6.0.0"
-    "@types/glob" "7.1.3"
-    "@types/mkdirp" "1.0.1"
-    "@types/node" "14.11.8"
-    commander "^6.1.0"
-    detect-indent "^6.0.0"
-    glob "^7.1.6"
-    mkdirp "^1.0.4"
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"
@@ -512,6 +498,20 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
+"@qiwi/dts-bundle@^0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@qiwi/dts-bundle/-/dts-bundle-0.7.4.tgz#f93f26c0eaba36cb3061148aab15657298248a51"
+  integrity sha512-3obassdaXGei6Ymvwb11S8jbDc5xoPyioIogmqqE9QXj1qs1jycC18s3ggYZPg1ErOPARxdaUD10va+odSZnpw==
+  dependencies:
+    "@types/detect-indent" "6.0.0"
+    "@types/glob" "7.1.3"
+    "@types/mkdirp" "1.0.1"
+    "@types/node" "14.14.6"
+    commander "^6.2.0"
+    detect-indent "^6.0.0"
+    glob "^7.1.6"
+    mkdirp "^1.0.4"
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.1.tgz#e7df00f98a203324f6dc7cc606cad9d4a8ab2217"
@@ -669,15 +669,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*":
+"@types/node@*", "@types/node@14.14.6":
   version "14.14.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.6.tgz#146d3da57b3c636cc0d1769396ce1cfa8991147f"
   integrity sha512-6QlRuqsQ/Ox/aJEQWBEJG7A9+u7oSYl3mem/K8IzxXG/kAGbV1YPD9Bg9Zw3vyxC/YP+zONKwy8hGkSt1jxFMw==
-
-"@types/node@14.11.8":
-  version "14.11.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.8.tgz#fe2012f2355e4ce08bca44aeb3abbb21cf88d33f"
-  integrity sha512-KPcKqKm5UKDkaYPTuXSx8wEP7vE9GnuaXIZKijwRYcePpZFDVuy2a57LarFKiORbHOuTOOwYzxVxcUzsh2P2Pw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -1273,7 +1268,7 @@ commander@^2.12.1, commander@^2.20.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@^6.1.0:
+commander@^6.1.0, commander@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.0.tgz#b990bfb8ac030aedc6d11bc04d1488ffef56db75"
   integrity sha512-zP4jEKbe8SHzKJYQmq8Y9gYjtO/POJLgIdKgV7B9qNmABVFVc+ctqSX6iXh4mCpJfRBOabiZ2YKPg8ciDw6C+Q==
