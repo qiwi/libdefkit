@@ -73,12 +73,58 @@
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
-				<p>Insert script to <code>package.json</code>.</p>
+				<p>Insert script to <code>package.json</code></p>
 				<pre><code class="language-json">{
   <span class="hljs-attr">&quot;scripts&quot;</span>: {
     <span class="hljs-attr">&quot;build:libdef&quot;</span>: <span class="hljs-string">&quot;libdefkit --tsconfig=tsconfig.es5.json --tsconfig=tsconfig.es6.json&quot;</span>
   }
 }</code></pre>
+				<a href="#cli" id="cli" style="color: inherit; text-decoration: none;">
+					<h2>CLI</h2>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th>Flag</th>
+							<th>Description</th>
+							<th>Default</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td><code>--help</code></td>
+							<td>Display usage hints</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><code>--cwd</code></td>
+							<td>Set current working dir</td>
+							<td><code>process.cwd()</code></td>
+						</tr>
+						<tr>
+							<td><code>--entry</code></td>
+							<td>Define pkg entry point</td>
+							<td><code>&lt;pkgName&gt;/target/es5</code></td>
+						</tr>
+						<tr>
+							<td><code>--tsconfig</code></td>
+							<td>Define path(s) to project&#39;s TS config</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><code>--dtsOut</code></td>
+							<td><strong>TS</strong> typings output</td>
+							<td><code>typings/index.d.ts</code></td>
+						</tr>
+						<tr>
+							<td><code>--flowOut</code></td>
+							<td><strong>Flow</strong> libdef output</td>
+							<td><code>flow-typed/index.flow.js</code></td>
+						</tr>
+				</tbody></table>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p><a href="./LICENSE">MIT</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -88,7 +134,7 @@
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module tsd-is-not-exported">
-						<a href="modules/reflection-110.html">&lt;em&gt;<wbr>Module&lt;/em&gt;</a>
+						<a href="modules/reflection-109.html">&lt;em&gt;<wbr>Module&lt;/em&gt;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_qiwi_libdefkit.html">@qiwi/libdefkit</a>
