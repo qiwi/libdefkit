@@ -35,7 +35,6 @@ declare module '@qiwi/libdefkit/target/es6/interface' {
         closest?: boolean;
     };
     export type ICliFlags = {
-        out?: string;
         cwd?: string;
         entry?: string;
         dtsOut?: string;
@@ -82,7 +81,6 @@ declare module '@qiwi/libdefkit/target/es5/interface' {
         closest?: boolean;
     };
     export type ICliFlags = {
-        out?: string;
         cwd?: string;
         entry?: string;
         dtsOut?: string;

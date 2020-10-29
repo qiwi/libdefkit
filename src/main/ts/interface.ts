@@ -13,7 +13,6 @@ export type ICmdInvokeOptions = {
 }
 
 export type ICliFlags = {
-  out?: string
   cwd?: string
   entry?: string,
   dtsOut?: string,

@@ -7,7 +7,7 @@ yarn add @qiwi/libdefkit -D
 ```
 
 ## Usage
-Insert script to `package.json`.
+Insert script to `package.json`
 ```json
 {
   "scripts": {
@@ -15,3 +15,15 @@ Insert script to `package.json`.
   }
 }
 ```
+## CLI
+|Flag | Description | Default
+|---|---|---
+|`--help` | Display usage hints
+|`--cwd` | Set current working dir | `process.cwd()` 
+|`--entry` | Define pkg entry point | `<pkgName>/target/es5` 
+|`--tsconfig` | Define path(s) to project's TS config
+|`--dtsOut` | **TS** typings output | `typings/index.d.ts` 
+|`--flowOut` | **Flow** libdef output | `flow-typed/index.flow.js` 
+
+## License
+[MIT](./LICENSE)

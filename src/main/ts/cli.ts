@@ -7,7 +7,6 @@ const cli = meow(`
     Usage:
       libdefkit --out=some/path/
     Options
-      --out, path to generated file
       --cwd, working dir path
       --tsconfig
       --entry, alias entry (<pkgName>/target/es5/index by default)
@@ -15,9 +14,6 @@ const cli = meow(`
       --flowOut, flow output (flow-typed/index.flow.js by default)
 `, {
   flags: {
-    out: {
-      type: 'string',
-    },
     cwd: {
       type: 'string',
     },
