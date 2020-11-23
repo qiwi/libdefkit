@@ -33,7 +33,7 @@
     "test:report": "yarn test && yarn push:report",
     "push:report": "yarn coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
-    "docs": "typedoc --readme README.md --tsconfig tsconfig.json src/main --ignoreCompilerErrors && touch ./docs/.nojekyll || exit 0",
+    "docs": "typedoc --readme README.md --tsconfig tsconfig.json src/main && touch ./docs/.nojekyll",
     "postupdate": "yarn && npx yarn-audit-fix && yarn build && yarn test",
     "publish:beta": "npm publish --no-git-tag-version --tag beta"
   },
@@ -82,7 +82,7 @@
     "tslint-config-qiwi": "^1.5.0",
     "typedoc": "^0.19.2",
     "typedoc-plugin-external-module-name": "^4.0.3",
-    "typescript": "^4.0.5"
+    "typescript": "^4.1.2"
   },
   "author": "QIWI <orensource@qiwi.com>",
   "contributors": [
