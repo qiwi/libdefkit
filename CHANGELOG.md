@@ -1,3 +1,10 @@
+## [2.1.5](https://github.com/qiwi/libdefkit/compare/v2.1.4...v2.1.5) (2020-11-23)
+
+
+### Performance Improvements
+
+* update typescript, fix docs script ([#17](https://github.com/qiwi/libdefkit/issues/17)) ([146369a](https://github.com/qiwi/libdefkit/commit/146369aa898f03a242b730ba29c2e6f6f96926eb))
+
 ## [2.1.4](https://github.com/qiwi/libdefkit/compare/v2.1.3...v2.1.4) (2020-10-29)
 
 
