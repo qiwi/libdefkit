@@ -1,24 +1,25 @@
 /** @module @qiwi/libdefkit */
 /** */
 
-import {resolve} from 'path'
-import cp, {StdioOptions} from 'child_process'
-import fs from 'fs-extra'
 import chalk from 'chalk'
-import {sync as pkgDir} from 'pkg-dir'
+import cp, {StdioOptions} from 'child_process'
 import {sync as findUp} from 'find-up'
+import fs from 'fs-extra'
+import {resolve} from 'path'
+import {sync as pkgDir} from 'pkg-dir'
+
 import {ICmdInvokeOptions} from './interface'
 
 export const STDIO_INHERIT: StdioOptions = ['inherit', 'inherit', 'inherit']
-export const STDIO_NULL: StdioOptions = [null, null, null]
+export const STDIO_NULL: StdioOptions = [null, null, null] // eslint-disable-line
 
-export const getCmd = (cmd: string, closest?: boolean, isWin = process.platform === 'win32') => {
+export const getCmd = (cmd: string, closest?: boolean, isWin = process.platform === 'win32'): string => {
   const _cmd = cmd + (isWin ? '.cmd' : '')
 
   return closest ? getClosestBin(_cmd) : _cmd
 }
 
-export const invoke = ({cmd, args = [], cwd = process.cwd(), silent= false, closest, stdio = STDIO_INHERIT}: ICmdInvokeOptions) => {
+export const invoke = ({cmd, args = [], cwd = process.cwd(), silent= false, closest, stdio = STDIO_INHERIT}: ICmdInvokeOptions): string => {
   const _cmd = getCmd(cmd, closest)
   const _args = formatArgs(args)
 
@@ -34,7 +35,7 @@ export const invoke = ({cmd, args = [], cwd = process.cwd(), silent= false, clos
 }
 
 const checkValue = (key: string, value: any, omitlist: any[], picklist: any[]): boolean =>
-  value !== 'false' && !omitlist.includes(key) && (!picklist.length || picklist.includes(key))
+  value !== 'false' && !omitlist.includes(key) && (picklist.length === 0 || picklist.includes(key))
 
 const formatFlag = (key: string): string => (key.length === 1 ? '-' : '--') + key
 

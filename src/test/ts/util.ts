@@ -1,14 +1,15 @@
-import {resolve} from 'path'
-import fs from 'fs-extra'
 import cp from 'child_process'
+import fs from 'fs-extra'
+import {resolve} from 'path'
 import parseArguments from 'yargs-parser'
+
+import {ICmdInvokeOptions} from '../../main/ts/interface'
 import {
   formatArgs,
-  invoke,
   getClosestBin,
+  invoke,
   STDIO_INHERIT, STDIO_NULL,
 } from '../../main/ts/util'
-import {ICmdInvokeOptions} from '../../main/ts/interface'
 
 jest.mock('child_process')
 jest.mock('fs-extra')

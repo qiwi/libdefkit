@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import meow from 'meow'
+
 import {execute} from './libdefkit'
 
 const cli = meow(`

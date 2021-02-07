@@ -1,5 +1,6 @@
+import {join,resolve} from 'path'
+
 import {execute} from '../../main/ts'
-import {resolve, join} from 'path'
 
 describe('libdefkit', () => {
   describe('#execute', () => {
