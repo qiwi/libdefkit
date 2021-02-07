@@ -1,6 +1,6 @@
-import {join,resolve} from 'path'
+import { join, resolve } from 'path'
 
-import {execute} from '../../main/ts'
+import { execute } from '../../main/ts'
 
 describe('libdefkit', () => {
   describe('#execute', () => {
@@ -9,18 +9,15 @@ describe('libdefkit', () => {
       const dtsOut = join(temp, 'index.d.ts')
       const flowOut = join(temp, 'index.flow.js')
       const result = execute({
-        tsconfig: [
-          'tsconfig.es5.json',
-          'tsconfig.es6.json',
-        ],
+        tsconfig: ['tsconfig.es5.json', 'tsconfig.es6.json'],
         dtsOut,
         flowOut,
       })
 
       const cwd = JSON.stringify(process.cwd()).slice(1, -1)
-      const snap = JSON.parse(JSON.stringify(result)
-        .split(cwd).join('<cwd>')
-        .replace(/\\\\/g, '/'))
+      const snap = JSON.parse(
+        JSON.stringify(result).split(cwd).join('<cwd>').replace(/\\\\/g, '/'),
+      )
 
       expect(snap).toMatchSnapshot()
     })
