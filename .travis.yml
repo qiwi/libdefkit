@@ -43,7 +43,7 @@ jobs:
       env: YARN_GPG=no
       install: yarn
       before_script: skip
-      script: yarn test
+      script: yarn test:unit
       after_script: skip
 
     - stage: release
