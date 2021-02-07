@@ -26,7 +26,7 @@
     "test": "npm-run-all -p -l lint test:unit test:depcheck test:depaudit",
     "test:unit": "mkdirp src/test/temp && jest --config=jest.config.json --runInBand",
     "test:deps": "npm-run-all -p -l test:depcheck test:depauditfix",
-    "test:depcheck": "npx depcheck --ignores tslib,@swissquote/crafty-preset-jest,@types/jest,flowgen,@qiwi/dts-bundle",
+    "test:depcheck": "npx depcheck --ignores tslib,@swissquote/crafty-preset-jest,@types/jest,flowgen,@qiwi/dts-bundle,esm",
     "test:depaudit": "yarn audit --level=moderate; [[ $? -ge 4 ]] && exit 1 || exit 0",
     "test:depauditfix": "npx yarn-audit-fix --audit-level=moderate",
     "clean": "rimraf target typings flow-typed",
