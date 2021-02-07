@@ -23,6 +23,7 @@
     "jest": "jest -w 1 --config=jest.config.json",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "yarn lint --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
     "test": "yarn lint && mkdirp src/test/temp && yarn jest",
     "clean": "rimraf target typings flow-typed",
     "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn build:libdef && yarn docs",
@@ -78,8 +79,11 @@
     "terser": "^5.5.1",
     "ts-jest": "^26.5.0",
     "typedoc": "^0.20.23",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "prettier": "^2.2.1",
+    "prettier-config-qiwi": "^1.3.2"
   },
+  "prettier": "prettier-config-qiwi",
   "author": "QIWI <orensource@qiwi.com>",
   "contributors": [
     "Anton Golub <a.golub@qiwi.com>"
