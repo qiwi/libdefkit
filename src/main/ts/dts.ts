@@ -1,12 +1,13 @@
 /** @module @qiwi/libdefkit */
 /** */
 
-import {invoke} from './util'
 import fs from 'fs-extra'
 import {join} from 'path'
-import {IExecPipe} from './interface'
 
-export const generate = (tsconfig: string, tempDir: string, name: string) => {
+import {IContext, IExecPipe} from './interface'
+import {invoke} from './util'
+
+export const generate = (tsconfig: string, tempDir: string, name: string): void => {
   const cfg = fs.readJsonSync(tsconfig)
   const targetDir = cfg?.compilerOptions?.outDir
   const genDir = join(tempDir, 'gen', targetDir)
@@ -30,7 +31,7 @@ export const generate = (tsconfig: string, tempDir: string, name: string) => {
   }})
 }
 
-export const alias = (from: string, to: string, tempDir: string) => {
+export const alias = (from: string, to: string, tempDir: string): void => {
   const bundleDir = join(tempDir, 'bundle')
   const bundlePath = join(bundleDir, 'entry.d.ts')
   const contents = `declare module '${to}' {
@@ -51,7 +52,7 @@ export const merge = (tempDir: string, dtsOut?: string): string => {
   return contents
 }
 
-export const pipe: IExecPipe = (ctx) => {
+export const pipe: IExecPipe = (ctx): IContext => {
   const {name, entry, cache, tsconfig = [], dtsOut} = ctx
 
   tsconfig.forEach(cfg => generate(cfg, cache, name))
