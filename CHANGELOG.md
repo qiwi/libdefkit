@@ -1,3 +1,10 @@
+## [2.1.8](https://github.com/qiwi/libdefkit/compare/v2.1.7...v2.1.8) (2021-03-16)
+
+
+### Performance Improvements
+
+* **pkg:** update @qiwi/dts-bundle to v0.7.5 ([4f88150](https://github.com/qiwi/libdefkit/commit/4f88150b34af4c71a62a38ab8be3003bf5d375b4)), closes [#16](https://github.com/qiwi/libdefkit/issues/16)
+
 ## [2.1.7](https://github.com/qiwi/libdefkit/compare/v2.1.6...v2.1.7) (2021-03-16)
 
 
