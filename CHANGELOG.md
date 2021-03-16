@@ -1,3 +1,10 @@
+## [2.1.7](https://github.com/qiwi/libdefkit/compare/v2.1.6...v2.1.7) (2021-03-16)
+
+
+### Performance Improvements
+
+* **pkg:** up deps ([86d4318](https://github.com/qiwi/libdefkit/commit/86d4318545b9f8fc761ee9f74eac136e023c958c))
+
 ## [2.1.6](https://github.com/qiwi/libdefkit/compare/v2.1.5...v2.1.6) (2021-02-07)
 
 
