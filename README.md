@@ -1,6 +1,9 @@
 # @qiwi/libdefkit
 Util toolset to produce single-file TS and Flow libdefs for Qiwi OSS projects
 
+## Requirements
+Node.js >= 14
+
 ## Install
 ```shell script
 yarn add @qiwi/libdefkit -D
