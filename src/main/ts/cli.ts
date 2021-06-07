@@ -16,6 +16,7 @@ const cli = meow(
       --flowOut, flow output (flow-typed/index.flow.js by default)
 `,
   {
+    importMeta: import.meta,
     flags: {
       cwd: {
         type: 'string',
