@@ -27,21 +27,25 @@
     "test": "npm-run-all -p -l lint test:unit test:depcheck test:depaudit",
     "test:unit": "mkdirp src/test/temp && jest --config=jest.config.json --runInBand",
     "test:deps": "npm-run-all -p -l test:depcheck test:depauditfix",
-    "test:depcheck": "npx depcheck --ignores tslib,@swissquote/crafty-preset-jest,@types/jest,flowgen,@qiwi/dts-bundle,esm",
+    "test:depcheck": "npm_config_yes=true npx depcheck --ignores tslib,@swissquote/crafty-preset-jest,@types/jest,flowgen,@qiwi/dts-bundle,esm",
     "test:depaudit": "yarn audit --level=moderate; [[ $? -ge 4 ]] && exit 1 || exit 0",
-    "test:depauditfix": "npx yarn-audit-fix --audit-level=moderate",
+    "test:depauditfix": "npm_config_yes=true npx yarn-audit-fix --audit-level=moderate",
     "clean": "rimraf target typings flow-typed",
-    "build": "npm-run-all -p -l build:es5 build:es6 build:ts docs && yarn build:libdef",
+    "build": "npm-run-all -p -l build:es5 build:es6 build:ts docs build:fix && yarn build:libdef",
     "build:es5": "mkdirp target/es5 && tsc -p tsconfig.es5.json",
     "build:es6": "mkdirp target/es6 && tsc -p tsconfig.es6.json",
     "build:ts": "cpy src/main/ts/ target/ts/",
-    "build:libdef": "node -r esm ./target/es6/cli.js --tsconfig=tsconfig.es5.json --tsconfig=tsconfig.es6.json",
+    "build:fix": "npm_config_yes=true npx tsc-es2020-fix --target=./target/es6 --target=./target/es5",
+    "build:libdef": "node ./target/es6/cli.js --tsconfig=tsconfig.es5.json --tsconfig=tsconfig.es6.json",
     "test:report": "yarn test && yarn push:report",
     "push:report": "yarn coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
     "docs": "typedoc && touch ./docs/.nojekyll",
     "postupdate": "yarn && yarn test:depauditfix && yarn build && yarn test",
     "publish:beta": "npm publish --no-git-tag-version --tag beta"
+  },
+  "engines": {
+    "node": ">=14.8"
   },
   "repository": {
     "type": "git",
@@ -68,7 +72,6 @@
     "pkg-dir": "^5.0.0"
   },
   "devDependencies": {
-    "esm": "^3.2.25",
     "@types/yargs-parser": "^20.2.0",
     "yargs-parser": "^20.2.7",
     "@qiwi/npm-run-all": "^4.1.7",
