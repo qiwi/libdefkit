@@ -1,3 +1,17 @@
+# [3.0.0](https://github.com/qiwi/libdefkit/compare/v2.1.8...v3.0.0) (2021-06-07)
+
+
+### Performance Improvements
+
+* repack as mjs ([c50df11](https://github.com/qiwi/libdefkit/commit/c50df11aed9ec88f21d81fdf15bcd4257f0ee058))
+* update deps, migrate to mjs modules ([bb40f2b](https://github.com/qiwi/libdefkit/commit/bb40f2bab2d306c1baa37ef892dc885d26154c70))
+
+
+### BREAKING CHANGES
+
+* require Node.js >= 14
+* repack as mjs, require Node.js >= 14
+
 ## [2.1.8](https://github.com/qiwi/libdefkit/compare/v2.1.7...v2.1.8) (2021-03-16)
 
 
