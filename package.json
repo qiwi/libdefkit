@@ -58,6 +58,9 @@
     "url": "https://github.com/qiwi/libdefkit/issues"
   },
   "homepage": "https://github.com/qiwi/libdefkit#readme",
+  "resolutions": {
+    "**/glob-parent": "^6.0.1"
+  },
   "dependencies": {
     "@qiwi/dts-bundle": "^0.7.5",
     "@types/find-cache-dir": "^3.2.1",
