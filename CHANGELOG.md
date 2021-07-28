@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/qiwi/libdefkit/compare/v3.1.0...v3.1.1) (2021-07-28)
+
+
+### Bug Fixes
+
+* **lockfile:** update glob-parent to v6 ([8c22813](https://github.com/qiwi/libdefkit/commit/8c22813602288051f5a1d6a8aff6cf50eac629b8))
+
 # [3.1.0](https://github.com/qiwi/libdefkit/compare/v3.0.0...v3.1.0) (2021-07-28)
 
 
