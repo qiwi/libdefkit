@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/qiwi/libdefkit/compare/v3.0.0...v3.1.0) (2021-07-28)
+
+
+### Features
+
+* introduce customTypings injection ([68005d0](https://github.com/qiwi/libdefkit/commit/68005d0f0869d72595331caa3ce53e2a7611139f)), closes [#25](https://github.com/qiwi/libdefkit/issues/25)
+
 # [3.0.0](https://github.com/qiwi/libdefkit/compare/v2.1.8...v3.0.0) (2021-06-07)
 
 
