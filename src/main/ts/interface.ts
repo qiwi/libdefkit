@@ -18,6 +18,7 @@ export type ICliFlags = {
   dtsOut?: string
   flowOut?: string
   tsconfig?: string[]
+  customTypings?: string[]
 }
 
 export type IContext = ICliFlags & {

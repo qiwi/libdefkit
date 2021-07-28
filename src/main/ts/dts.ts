@@ -2,6 +2,7 @@
 /** */
 
 import fs from 'fs-extra'
+import globby from 'globby'
 import { join } from 'path'
 
 import { IContext, IExecPipe } from './interface'
@@ -52,22 +53,12 @@ export const alias = (from: string, to: string, tempDir: string): void => {
   fs.outputFileSync(bundlePath, contents)
 }
 
-export const merge = (tempDir: string, dtsOut?: string): string => {
-  const bundleDir = join(tempDir, 'bundle')
-  const contents = fs
-    .readdirSync(bundleDir)
-    .reduce(
-      (m, f) => fs.readFileSync(join(bundleDir, f), { encoding: 'utf-8' }) + m,
-      '',
-    )
-
-  dtsOut && fs.outputFileSync(dtsOut, contents, {})
-
-  return contents
-}
+export const merge = (files: string[], memo = ''): string => files.reduce((m: string, f: string) =>
+  m + fs.readFileSync(f, { encoding: 'utf-8' })
+, memo)
 
 export const pipe: IExecPipe = (ctx): IContext => {
-  const { name, entry, cache, tsconfig = [], dtsOut } = ctx
+  const { name, entry, cache, tsconfig = [], customTypings = [], dtsOut, cwd } = ctx
 
   tsconfig.forEach((cfg) => generate(cfg, cache, name))
 
@@ -75,7 +66,16 @@ export const pipe: IExecPipe = (ctx): IContext => {
     alias(entry, name, cache)
   }
 
-  const dts = merge(cache, dtsOut)
+  const files = [
+    ...globby.sync(['bundle/**/*.ts'], {onlyFiles: true, absolute: true, cwd: cache}),
+    ...globby.sync(customTypings, {onlyFiles: true, absolute: true, cwd})
+  ]
+
+  const dts = merge(files)
+
+  if (dtsOut) {
+    fs.outputFileSync(dtsOut, dts, {})
+  }
 
   return { ...ctx, dts }
 }
