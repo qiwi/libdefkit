@@ -12,6 +12,7 @@ describe('libdefkit', () => {
         tsconfig: ['tsconfig.es5.json', 'tsconfig.es6.json'],
         dtsOut,
         flowOut,
+        customTypings: ['customTypings/**/*.d.ts']
       })
 
       const cwd = JSON.stringify(process.cwd()).slice(1, -1)
