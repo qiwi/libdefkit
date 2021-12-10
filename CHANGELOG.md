@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/qiwi/libdefkit/compare/v3.1.1...v3.1.2) (2021-12-10)
+
+
+### Bug Fixes
+
+* update flowgen to v1.16.0 ([1495436](https://github.com/qiwi/libdefkit/commit/1495436018e2ec69ed763bcf147656078d17a535))
+
 ## [3.1.1](https://github.com/qiwi/libdefkit/compare/v3.1.0...v3.1.1) (2021-07-28)
 
 
