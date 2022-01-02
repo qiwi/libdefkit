@@ -3,10 +3,10 @@
 
 import chalk from 'chalk'
 import cp, { StdioOptions } from 'child_process'
-import { sync as findUp } from 'find-up'
+import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
 import { resolve } from 'path'
-import { sync as pkgDir } from 'pkg-dir'
+import { packageDirectorySync } from 'pkg-dir'
 
 import { ICmdInvokeOptions } from './interface'
 
@@ -85,9 +85,9 @@ export const formatArgs = (
 
 export const getClosestBin = (
   cmd: string,
-  cwd: string = pkgDir(__dirname) + '',
+  cwd: string = packageDirectorySync({cwd: __dirname}) + '',
 ): string =>
-  findUp(
+  findUpSync(
     (dir) => {
       const ref = resolve(dir, 'node_modules', '.bin', cmd)
 
