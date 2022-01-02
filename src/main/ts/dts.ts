@@ -2,7 +2,7 @@
 /** */
 
 import fs from 'fs-extra'
-import globby from 'globby'
+import { globbySync } from 'globby'
 import { join } from 'path'
 
 import { IContext, IExecPipe } from './interface'
@@ -67,8 +67,8 @@ export const pipe: IExecPipe = (ctx): IContext => {
   }
 
   const files = [
-    ...globby.sync(['bundle/**/*.ts'], {onlyFiles: true, absolute: true, cwd: cache}),
-    ...globby.sync(customTypings, {onlyFiles: true, absolute: true, cwd})
+    ...globbySync(['bundle/**/*.ts'], {onlyFiles: true, absolute: true, cwd: cache}),
+    ...globbySync(customTypings, {onlyFiles: true, absolute: true, cwd})
   ]
 
   const dts = merge(files)
