@@ -25,7 +25,7 @@
     "lint:fix": "yarn lint --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "test": "npm-run-all -p -l lint test:unit test:depcheck test:depaudit",
-    "test:unit": "mkdirp src/test/temp && jest --config=jest.config.json --runInBand",
+    "test:unit": "mkdirp src/test/temp && NODE_OPTIONS=--experimental-vm-modules jest --config=jest.config.json --runInBand",
     "test:deps": "npm-run-all -p -l test:depcheck test:depauditfix",
     "test:depcheck": "npm_config_yes=true npx -p depcheck -p @babel/parser@7.16.4 depcheck --ignores typedoc,tslib,@swissquote/crafty-preset-jest,@types/jest,flowgen,@qiwi/dts-bundle,esm,eslint-config-*",
     "test:depaudit": "yarn audit --level=moderate --groups=dependencies; [[ $? -ge 4 ]] && exit 1 || exit 0",

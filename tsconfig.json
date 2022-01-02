@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
     "rootDir": "./src/main/ts/",
     "baseUrl": "./src/main/ts/",
     "moduleResolution": "node",
@@ -16,10 +15,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "importHelpers": true,
-    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
 
     "incremental": true,
     "tsBuildInfoFile": "./buildcache/.tsbuildinfo"
