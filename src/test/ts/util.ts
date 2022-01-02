@@ -1,5 +1,5 @@
 import cp from 'child_process'
-import fs from 'fs-extra'
+import fse from 'fs-extra'
 import { resolve } from 'path'
 import parseArguments from 'yargs-parser'
 
@@ -25,7 +25,7 @@ describe('util', () => {
         /* noop */
       })
       // @ts-ignore
-      fs.existsSync.mockImplementation((cmd) => cmd !== 'not-found' + dotcmd)
+      fse.existsSync.mockImplementation((cmd) => cmd !== 'not-found' + dotcmd)
       // @ts-ignore
       cp.spawnSync.mockImplementation((cmd) => {
         const results: Record<string, any> = {
