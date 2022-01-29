@@ -1,14 +1,16 @@
 /** @module @qiwi/libdefkit */
 /** */
 
-import chalk from 'chalk'
 import cp, { StdioOptions } from 'child_process'
 import { findUpSync } from 'find-up'
-import fs from 'fs-extra'
-import { resolve } from 'path'
+import fse from 'fs-extra'
+import {fileURLToPath} from "node:url";
+import { dirname, resolve } from 'path'
 import { packageDirectorySync } from 'pkg-dir'
-
+import { default as chalk } from 'chalk'
 import { ICmdInvokeOptions } from './interface'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export const STDIO_INHERIT: StdioOptions = ['inherit', 'inherit', 'inherit']
 export const STDIO_NULL: StdioOptions = [null, null, null] // eslint-disable-line
@@ -91,7 +93,7 @@ export const getClosestBin = (
     (dir) => {
       const ref = resolve(dir, 'node_modules', '.bin', cmd)
 
-      return fs.existsSync(ref) ? ref : undefined
+      return fse.existsSync(ref) ? ref : undefined
     },
     { cwd },
   ) || cmd

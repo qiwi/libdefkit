@@ -1,6 +1,8 @@
+import { jest } from '@jest/globals'
 import cp from 'child_process'
 import fse from 'fs-extra'
-import { resolve } from 'path'
+import {fileURLToPath} from 'node:url'
+import { dirname,resolve } from 'path'
 import parseArguments from 'yargs-parser'
 
 import { ICmdInvokeOptions } from '../../main/ts/interface'
@@ -12,37 +14,35 @@ import {
   STDIO_NULL,
 } from '../../main/ts/util'
 
-jest.mock('child_process')
-jest.mock('fs-extra')
+const dotcmd = process.platform === 'win32' ? '.cmd' : ''
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const fakeExistsSync = jest.fn((cmd) => cmd !== 'not-found' + dotcmd)
+const fakeSpawnSync = jest.fn((cmd: string) => {
+  const results: Record<string, any> = {
+    error: { status: 1, stderr: 'some error' },
+    def: { status: 0, stdout: 'foobar' },
+    null: { status: 0, stdout: null },
+  }
+
+  return results[cmd.replace(dotcmd, '')] || results.def
+})
+
+beforeAll(() => {
+  jest.spyOn(cp, 'spawnSync').mockImplementation(fakeSpawnSync)
+  jest.spyOn(fse, 'existsSync').mockImplementation(fakeExistsSync)
+  // @ts-ignore
+  jest.spyOn(process, 'exit').mockImplementation(() => {
+    /* noop */
+  })
+})
+afterEach(jest.clearAllMocks)
+afterAll(jest.resetAllMocks)
 
 describe('util', () => {
   const dotcmd = process.platform === 'win32' ? '.cmd' : ''
 
   describe('#invoke', () => {
-    beforeEach(() => {
-      // @ts-ignore
-      jest.spyOn(process, 'exit').mockImplementation(() => {
-        /* noop */
-      })
-      // @ts-ignore
-      fse.existsSync.mockImplementation((cmd) => cmd !== 'not-found' + dotcmd)
-      // @ts-ignore
-      cp.spawnSync.mockImplementation((cmd) => {
-        const results: Record<string, any> = {
-          error: { status: 1, stderr: 'some error' },
-          def: { status: 0, stdout: 'foobar' },
-          null: { status: 0, stdout: null },
-        }
-
-        return results[cmd.replace(dotcmd, '')] || results.def
-      })
-    })
-    afterEach(jest.clearAllMocks)
-    afterAll(() => {
-      jest.unmock('fs-extra')
-      jest.unmock('child_process')
-    })
-
     const cases: [
       string,
       ICmdInvokeOptions,
@@ -97,7 +97,7 @@ describe('util', () => {
           }
 
           expectedCmd &&
-            expect(cp.spawnSync).toHaveBeenCalledWith(
+            expect(fakeSpawnSync).toHaveBeenCalledWith(
               expectedCmd + dotcmd,
               expectedArgs,
               expectedOpts,
