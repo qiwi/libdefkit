@@ -1,6 +1,6 @@
 {
   "preset": "ts-jest",
-  "collectCoverage": true,
+  "collectCoverage": false,
   "transform": {
     "^.+\\.tsx?$": "ts-jest"
   },
@@ -20,6 +20,7 @@
     "<rootDir>/src/test/stub"
   ],
   "moduleNameMapper": {
+    "chalk": "chalk/source/index.js",
     "#ansi-styles": "chalk/source/vendor/ansi-styles/index.js",
     "#supports-color": "chalk/source/vendor/supports-color/index.js"
   },
@@ -39,5 +40,6 @@
       "tsconfig": "<rootDir>/tsconfig.test.json"
     }
   },
-  "snapshotResolver": "<rootDir>/jest.snapshot.cjs"
+  "snapshotResolver": "<rootDir>/jest.snapshot.cjs",
+  "resolver": "<rootDir>/jest.resolver.cjs"
 }

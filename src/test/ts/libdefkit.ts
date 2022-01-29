@@ -1,6 +1,12 @@
-import { join, resolve } from 'path'
+import '@jest/globals'
+
+import {fileURLToPath} from 'node:url'
+import { dirname,join, resolve } from 'path'
 
 import { execute } from '../../main/ts'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 describe('libdefkit', () => {
   describe('#execute', () => {
