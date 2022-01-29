@@ -1,5 +1,5 @@
 language: node_js
-node_js: 14
+node_js: 16
 
 install: skip
 script: skip
@@ -48,7 +48,7 @@ jobs:
 
     - stage: release
       if: branch = master AND type != pull_request
-      node_js: 14
+      node_js: 16
       workspaces:
         use: shared
       install: skip
