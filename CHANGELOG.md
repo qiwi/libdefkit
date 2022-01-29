@@ -1,3 +1,11 @@
+## [3.1.3](https://github.com/qiwi/libdefkit/compare/v3.1.2...v3.1.3) (2022-01-29)
+
+
+### Bug Fixes
+
+* update deps, fix some vuls ([4b9e89e](https://github.com/qiwi/libdefkit/commit/4b9e89e73a2b2a8df855fae1f5052e089bf3d803))
+* update flowgen ([88ec780](https://github.com/qiwi/libdefkit/commit/88ec78030915d9cfca07b2138ff3cea15f7bfad2))
+
 ## [3.1.2](https://github.com/qiwi/libdefkit/compare/v3.1.1...v3.1.2) (2021-12-10)
 
 
