@@ -1,13 +1,14 @@
 /** @module @qiwi/libdefkit */
 /** */
 
+import chalk from 'chalk'
 import cp, { StdioOptions } from 'child_process'
 import { findUpSync } from 'find-up'
 import fse from 'fs-extra'
 import {fileURLToPath} from "node:url";
 import { dirname, resolve } from 'path'
 import { packageDirectorySync } from 'pkg-dir'
-import { default as chalk } from 'chalk'
+
 import { ICmdInvokeOptions } from './interface'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
