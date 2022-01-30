@@ -1,7 +1,7 @@
 /** @module @qiwi/libdefkit */
 /** */
 
-import fs from 'fs-extra'
+import fse from 'fs-extra'
 import { globbySync } from 'globby'
 import { join } from 'path'
 
@@ -13,14 +13,15 @@ export const generate = (
   tempDir: string,
   name: string,
 ): void => {
-  const cfg = fs.readJsonSync(tsconfig)
+  const cfg = fse.readJsonSync(tsconfig)
   const targetDir = cfg?.compilerOptions?.outDir
-  const genDir = join(tempDir, 'gen', targetDir)
-  const bundleDir = join(tempDir, 'bundle')
+  const rand = Math.random().toString(16).slice(2, 10)
+  const genDir = join(tempDir, `libdefkit-${rand}/gen`, targetDir)
+  const bundleDir = join(tempDir, `libdefkit-${rand}/bundle`)
   const bundlePath = join(bundleDir, cfg?.compilerOptions?.target + '.d.ts')
-
-  fs.ensureDirSync(genDir)
-  fs.ensureDirSync(bundleDir)
+console.log('!!!bundlePath', bundlePath)
+  fse.ensureDirSync(genDir)
+  fse.ensureDirSync(bundleDir)
 
   invoke({
     cmd: 'tsc',
@@ -50,11 +51,11 @@ export const alias = (from: string, to: string, tempDir: string): void => {
   export * from '${from}';
 }
 `
-  fs.outputFileSync(bundlePath, contents)
+  fse.outputFileSync(bundlePath, contents)
 }
 
 export const merge = (files: string[], memo = ''): string => files.reduce((m: string, f: string) =>
-  m + fs.readFileSync(f, { encoding: 'utf-8' })
+  m + fse.readFileSync(f, { encoding: 'utf-8' })
 , memo)
 
 export const pipe: IExecPipe = (ctx): IContext => {
@@ -67,14 +68,14 @@ export const pipe: IExecPipe = (ctx): IContext => {
   }
 
   const files = [
-    ...globbySync(['bundle/**/*.ts'], {onlyFiles: true, absolute: true, cwd: cache}),
+    ...globbySync(['**/bundle/**/*.ts'], {onlyFiles: true, absolute: true, cwd: cache}),
     ...globbySync(customTypings, {onlyFiles: true, absolute: true, cwd})
   ]
 
   const dts = merge(files)
 
   if (dtsOut) {
-    fs.outputFileSync(dtsOut, dts, {})
+    fse.outputFileSync(dtsOut, dts, {})
   }
 
   return { ...ctx, dts }
