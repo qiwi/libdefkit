@@ -26,8 +26,9 @@ Insert script to `package.json`
 |`--entry` | Define pkg entry point | `<pkgName>/target/es5` 
 |`--tsconfig` | Define path(s) to project's TS config
 |`--customTypings` | Attach custom libdefs to d.ts bundle
+|`--cache` | Dir for temporary assets | `tempy.directory()`
 |`--dtsOut` | **TS** typings output | `typings/index.d.ts` 
-|`--flowOut` | **Flow** libdef output | `flow-typed/index.flow.js` 
+|`--flowOut` | **Flow** libdef output | `flow-typed/index.flow.js`
 
 ## License
 [MIT](./LICENSE)
