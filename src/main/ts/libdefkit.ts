@@ -30,7 +30,7 @@ export const flowgen: IExecPipe = ({ dtsOut, flowOut }): void => {
   }
 }
 
-export const pipeline: IExecPipe[] = [normalize, clear, dtsgen, flowgen]
+export const pipeline: IExecPipe[] = [normalize, clear, dtsgen, flowgen, clear]
 
 export const execute = (flags: ICliFlags): IContext =>
   pipeline.reduce((ctx, pipe) => pipe(ctx) || ctx, flags as IContext)
