@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/qiwi/libdefkit/compare/v3.2.0...v4.0.0) (2022-01-30)
+
+
+### Features
+
+* make target/es6 default package entry option ([fd22497](https://github.com/qiwi/libdefkit/commit/fd224976a2d9b07bcf5a2418fb010ffbe6b85f1b))
+
+
+### BREAKING CHANGES
+
+* target/es6 is now default entry option
+
 # [3.2.0](https://github.com/qiwi/libdefkit/compare/v3.1.3...v3.2.0) (2022-01-30)
 
 ### Features
