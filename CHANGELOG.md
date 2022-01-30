@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/qiwi/libdefkit/compare/v3.1.3...v3.2.0) (2022-01-30)
+
+
+### Features
+
+* introduce cache option ([01e00b3](https://github.com/qiwi/libdefkit/commit/01e00b3fe0dc1ca227092491c08168f87601a50a))
+
 ## [3.1.3](https://github.com/qiwi/libdefkit/compare/v3.1.2...v3.1.3) (2022-01-29)
 
 
