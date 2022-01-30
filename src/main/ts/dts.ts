@@ -19,7 +19,7 @@ export const generate = (
   const genDir = join(tempDir, `libdefkit-${rand}/gen`, targetDir)
   const bundleDir = join(tempDir, `libdefkit-${rand}/bundle`)
   const bundlePath = join(bundleDir, cfg?.compilerOptions?.target + '.d.ts')
-console.log('!!!bundlePath', bundlePath)
+
   fse.ensureDirSync(genDir)
   fse.ensureDirSync(bundleDir)
 
