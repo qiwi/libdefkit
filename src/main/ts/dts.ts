@@ -3,6 +3,7 @@
 
 import fse from 'fs-extra'
 import { globbySync } from 'globby'
+import { nanoid } from 'nanoid'
 import { join } from 'path'
 
 import { IContext, IExecPipe } from './interface'
@@ -15,7 +16,7 @@ export const generate = (
 ): void => {
   const cfg = fse.readJsonSync(tsconfig)
   const targetDir = cfg?.compilerOptions?.outDir
-  const rand = Math.random().toString(16).slice(2, 10)
+  const rand = nanoid()
   const genDir = join(tempDir, `libdefkit-${rand}/gen`, targetDir)
   const bundleDir = join(tempDir, `libdefkit-${rand}/bundle`)
   const bundlePath = join(bundleDir, cfg?.compilerOptions?.target + '.d.ts')
