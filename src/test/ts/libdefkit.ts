@@ -15,7 +15,7 @@ describe('libdefkit', () => {
       const dtsOut = join(temp, 'index.d.ts')
       const flowOut = join(temp, 'index.flow.js')
       const result = execute({
-        tsconfig: ['tsconfig.es5.json', 'tsconfig.es6.json'],
+        tsconfig: ['tsconfig.es6.json'],
         dtsOut,
         flowOut,
         customTypings: ['customTypings/**/*.d.ts']
