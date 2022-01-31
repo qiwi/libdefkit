@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/qiwi/libdefkit/compare/v4.0.0...v4.0.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* add missed dep ([65a57b9](https://github.com/qiwi/libdefkit/commit/65a57b93ddcd6ed3b01f93276daddabbc3a11b76))
+
 # [4.0.0](https://github.com/qiwi/libdefkit/compare/v3.2.0...v4.0.0) (2022-01-30)
 
 
