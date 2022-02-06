@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/qiwi/libdefkit/compare/v4.0.2...v4.0.3) (2022-02-06)
+
+
+### Bug Fixes
+
+* improve bin paths resolver ([f69068e](https://github.com/qiwi/libdefkit/commit/f69068eea3f9021360437d4a274dd6a79ec3dbf7))
+
 ## [4.0.2](https://github.com/qiwi/libdefkit/compare/v4.0.1...v4.0.2) (2022-02-06)
 
 
