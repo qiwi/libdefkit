@@ -18,12 +18,13 @@ export const STDIO_NULL: StdioOptions = [null, null, null] // eslint-disable-lin
 
 export const getCmd = (
   cmd: string,
+  cwd: string,
   closest?: boolean,
   isWin = process.platform === 'win32',
 ): string => {
   const _cmd = cmd + (isWin ? '.cmd' : '')
 
-  return closest ? getClosestBin(_cmd) : _cmd
+  return closest ? getClosestBin(_cmd, cwd) : _cmd
 }
 
 export const invoke = ({
@@ -34,7 +35,7 @@ export const invoke = ({
   closest,
   stdio = STDIO_INHERIT,
 }: ICmdInvokeOptions): string => {
-  const _cmd = getCmd(cmd, closest)
+  const _cmd = getCmd(cmd, cwd, closest)
   const _args = formatArgs(args)
 
   !silent && console.log(chalk.bold('invoke'), _cmd, ..._args)
@@ -86,15 +87,20 @@ export const formatArgs = (
   picklist?: string[],
 ): string[] => (Array.isArray(args) ? args : formatFlags(args, picklist))
 
+
+export const findBin = (cmd: string, cwd: string) => findUpSync(
+  (dir) => {
+    const ref = resolve(dir, 'node_modules', '.bin', cmd)
+
+    return fse.existsSync(ref) ? ref : undefined
+  },
+  { cwd, type: 'file', allowSymlinks: true },
+)
+
 export const getClosestBin = (
   cmd: string,
-  cwd: string = packageDirectorySync({ cwd: __dirname }) + '',
+  cwd: string = process.cwd(),
 ): string =>
-  findUpSync(
-    (dir) => {
-      const ref = resolve(dir, 'node_modules', '.bin', cmd)
-
-      return fse.existsSync(ref) ? ref : undefined
-    },
-    { cwd },
-  ) || cmd
+  findBin(cmd, cwd) ||
+  findBin(cmd, packageDirectorySync({ cwd: __dirname })) ||
+  cmd
