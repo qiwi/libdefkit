@@ -37,8 +37,8 @@ const cli = meow(
         isMultiple: true,
       },
       cache: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
   },
 )

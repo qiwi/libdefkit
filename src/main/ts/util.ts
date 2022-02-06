@@ -5,7 +5,7 @@ import chalk from 'chalk'
 import cp, { StdioOptions } from 'child_process'
 import { findUpSync } from 'find-up'
 import fse from 'fs-extra'
-import {fileURLToPath} from "node:url";
+import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'path'
 import { packageDirectorySync } from 'pkg-dir'
 
@@ -88,7 +88,7 @@ export const formatArgs = (
 
 export const getClosestBin = (
   cmd: string,
-  cwd: string = packageDirectorySync({cwd: __dirname}) + '',
+  cwd: string = packageDirectorySync({ cwd: __dirname }) + '',
 ): string =>
   findUpSync(
     (dir) => {

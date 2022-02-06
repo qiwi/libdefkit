@@ -1,8 +1,8 @@
 import { jest } from '@jest/globals'
 import cp from 'child_process'
 import fse from 'fs-extra'
-import {fileURLToPath} from 'node:url'
-import { dirname,resolve } from 'path'
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'path'
 import parseArguments from 'yargs-parser'
 
 import { ICmdInvokeOptions } from '../../main/ts/interface'

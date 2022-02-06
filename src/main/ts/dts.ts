@@ -32,6 +32,7 @@ export const generate = (
       emitDeclarationOnly: true,
       outDir: genDir,
     },
+    closest: true,
   })
 
   invoke({
@@ -41,6 +42,7 @@ export const generate = (
       main: join(genDir, 'index.d.ts'),
       out: bundlePath,
     },
+    closest: true,
   })
 }
 
@@ -55,12 +57,22 @@ export const alias = (from: string, to: string, tempDir: string): void => {
   fse.outputFileSync(bundlePath, contents)
 }
 
-export const merge = (files: string[], memo = ''): string => files.reduce((m: string, f: string) =>
-  m + fse.readFileSync(f, { encoding: 'utf-8' })
-, memo)
+export const merge = (files: string[], memo = ''): string =>
+  files.reduce(
+    (m: string, f: string) => m + fse.readFileSync(f, { encoding: 'utf-8' }),
+    memo,
+  )
 
 export const pipe: IExecPipe = (ctx): IContext => {
-  const { name, entry, cache, tsconfig = [], customTypings = [], dtsOut, cwd } = ctx
+  const {
+    name,
+    entry,
+    cache,
+    tsconfig = [],
+    customTypings = [],
+    dtsOut,
+    cwd,
+  } = ctx
 
   tsconfig.forEach((cfg) => generate(cfg, cache, name))
 
@@ -69,8 +81,12 @@ export const pipe: IExecPipe = (ctx): IContext => {
   }
 
   const files = [
-    ...globbySync(['**/bundle/**/*.ts'], {onlyFiles: true, absolute: true, cwd: cache}),
-    ...globbySync(customTypings, {onlyFiles: true, absolute: true, cwd})
+    ...globbySync(['**/bundle/**/*.ts'], {
+      onlyFiles: true,
+      absolute: true,
+      cwd: cache,
+    }),
+    ...globbySync(customTypings, { onlyFiles: true, absolute: true, cwd }),
   ]
 
   const dts = merge(files)

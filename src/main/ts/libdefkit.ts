@@ -26,7 +26,11 @@ export const clear: IExecPipe = (ctx) => {
 
 export const flowgen: IExecPipe = ({ dtsOut, flowOut }): void => {
   if (dtsOut && flowOut) {
-    invoke({ cmd: 'flowgen', args: [dtsOut, '--output-file', flowOut] })
+    invoke({
+      cmd: 'flowgen',
+      args: [dtsOut, '--output-file', flowOut],
+      closest: true,
+    })
   }
 }
 
