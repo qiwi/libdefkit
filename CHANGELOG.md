@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/qiwi/libdefkit/compare/v4.0.3...v4.0.4) (2022-02-06)
+
+
+### Bug Fixes
+
+* replace fse.esistSync with find-up helper ([ae3eda5](https://github.com/qiwi/libdefkit/commit/ae3eda53c7af15e0490c253c6e619c5c1ce09509))
+
 ## [4.0.3](https://github.com/qiwi/libdefkit/compare/v4.0.2...v4.0.3) (2022-02-06)
 
 

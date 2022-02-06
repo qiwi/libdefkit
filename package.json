@@ -1,6 +1,6 @@
 {
   "name": "@qiwi/libdefkit",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "private": false,
   "description": "Util toolset to produce single-file TS and Flow libdefs",
   "source": "src/main/ts/index.ts",
