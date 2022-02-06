@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/qiwi/libdefkit/compare/v4.0.1...v4.0.2) (2022-02-06)
+
+
+### Bug Fixes
+
+* use closest bin opt for invoke, linting ([3ef01cd](https://github.com/qiwi/libdefkit/commit/3ef01cd9f1465c02d98d2bcd84daeb2e1f0f413b))
+
 ## [4.0.1](https://github.com/qiwi/libdefkit/compare/v4.0.0...v4.0.1) (2022-01-31)
 
 
