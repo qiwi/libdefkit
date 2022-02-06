@@ -3,8 +3,7 @@
 
 import chalk from 'chalk'
 import cp, { StdioOptions } from 'child_process'
-import { findUpSync } from 'find-up'
-import fse from 'fs-extra'
+import { findUpSync, pathExistsSync } from 'find-up'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'path'
 import { packageDirectorySync } from 'pkg-dir'
@@ -92,7 +91,7 @@ export const findBin = (cmd: string, cwd: string) => findUpSync(
   (dir) => {
     const ref = resolve(dir, 'node_modules', '.bin', cmd)
 
-    return fse.existsSync(ref) ? ref : undefined
+    return pathExistsSync(ref) ? ref : undefined
   },
   { cwd, type: 'file', allowSymlinks: true },
 )
