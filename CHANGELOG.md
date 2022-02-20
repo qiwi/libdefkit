@@ -1,3 +1,10 @@
+## [4.0.5](https://github.com/qiwi/libdefkit/compare/v4.0.4...v4.0.5) (2022-02-20)
+
+
+### Bug Fixes
+
+* **deps:** update find-up and nanoid ([900cfa2](https://github.com/qiwi/libdefkit/commit/900cfa2e4d034d52bd9b186dac6d2060e5078d30))
+
 ## [4.0.4](https://github.com/qiwi/libdefkit/compare/v4.0.3...v4.0.4) (2022-02-06)
 
 
