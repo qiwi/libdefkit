@@ -1,3 +1,10 @@
+## [4.0.6](https://github.com/qiwi/libdefkit/compare/v4.0.5...v4.0.6) (2022-03-24)
+
+
+### Bug Fixes
+
+* force enable emit ([#36](https://github.com/qiwi/libdefkit/issues/36)) ([884f596](https://github.com/qiwi/libdefkit/commit/884f596adf16b52aaf89cef9cb7472cc45427dec))
+
 ## [4.0.5](https://github.com/qiwi/libdefkit/compare/v4.0.4...v4.0.5) (2022-02-20)
 
 
