@@ -31,6 +31,7 @@ export const generate = (
       declaration: true,
       emitDeclarationOnly: true,
       outDir: genDir,
+      noEmit: false,
     },
     closest: true,
   })
