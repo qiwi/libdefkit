@@ -3,7 +3,7 @@
 
 import fs from 'fs-extra'
 import { join } from 'path'
-import tempy from 'tempy'
+import { temporaryDirectory } from 'tempy'
 
 import { pipe as dtsgen } from './dts'
 import { ICliFlags, IContext, IExecPipe } from './interface'
@@ -11,7 +11,7 @@ import { invoke } from './util'
 
 export const normalize: IExecPipe = (flags: ICliFlags): IContext => {
   const cwd = flags.cwd || process.cwd()
-  const cache = tempy.directory()
+  const cache = temporaryDirectory()
   const name = fs.readJsonSync(join(cwd, 'package.json')).name
   const entry = flags.entry ?? `${name}/target/es6`
   const dtsOut = flags.dtsOut ?? join(cwd, 'typings', 'index.d.ts')
