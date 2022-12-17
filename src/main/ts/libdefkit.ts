@@ -2,7 +2,7 @@
 /** */
 
 import fs from 'fs-extra'
-import { join } from 'path'
+import { join } from 'node:path'
 import { temporaryDirectory } from 'tempy'
 
 import { pipe as dtsgen } from './dts'

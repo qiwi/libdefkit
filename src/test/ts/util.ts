@@ -1,11 +1,12 @@
 import { jest } from '@jest/globals'
-import cp from 'child_process'
+import cp from 'node:child_process'
 import fse from 'fs-extra'
 import { fileURLToPath } from 'node:url'
-import { dirname, resolve } from 'path'
+import { dirname, resolve } from 'node:path'
+import process from 'node:process'
 import parseArguments from 'yargs-parser'
 
-import { ICmdInvokeOptions } from '../../main/ts/interface'
+import {ICmdInvokeOptions, TFlags} from '../../main/ts/interface'
 import {
   formatArgs,
   getClosestBin,
@@ -17,12 +18,20 @@ import {
 const dotcmd = process.platform === 'win32' ? '.cmd' : ''
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const spawnResult = ({status = 0, stdout = '', stderr = ''} = {}): ReturnType<typeof cp.spawnSync> => ({
+  status,
+  stdout: Buffer.from(stdout),
+  stderr: Buffer.from(stderr),
+  pid: process.pid,
+  signal: null,
+  output: [],
+})
 const fakeExistsSync = jest.fn((cmd) => cmd !== 'not-found' + dotcmd)
 const fakeSpawnSync = jest.fn((cmd: string) => {
-  const results: Record<string, any> = {
-    error: { status: 1, stderr: 'some error' },
-    def: { status: 0, stdout: 'foobar' },
-    null: { status: 0, stdout: null },
+  const results: Record<string, ReturnType<typeof cp.spawnSync>> = {
+    error: spawnResult({ status: 1, stderr: 'some error' }),
+    def: spawnResult({ stdout: 'foobar' }),
+    empty: spawnResult({ stdout: '' }),
   }
 
   return results[cmd.replace(dotcmd, '')] || results.def
@@ -31,10 +40,7 @@ const fakeSpawnSync = jest.fn((cmd: string) => {
 beforeAll(() => {
   jest.spyOn(cp, 'spawnSync').mockImplementation(fakeSpawnSync)
   jest.spyOn(fse, 'existsSync').mockImplementation(fakeExistsSync)
-  // @ts-ignore
-  jest.spyOn(process, 'exit').mockImplementation(() => {
-    /* noop */
-  })
+  jest.spyOn(process, 'exit').mockImplementation(() => undefined as never)
 })
 afterEach(jest.clearAllMocks)
 afterAll(jest.resetAllMocks)
@@ -48,7 +54,7 @@ describe('util', () => {
       ICmdInvokeOptions,
       string?,
       (string | null)?,
-      any?,
+      (Parameters<typeof spawnResult>[0] | null)?,
     ][] = [
       ['uses global cmd ref', { cmd: 'tsc' }, 'tsc'],
       [
@@ -65,10 +71,10 @@ describe('util', () => {
         'foobar',
       ],
       [
-        'returns null if stdout is null',
-        { cmd: 'null', silent: true },
-        'null',
-        null,
+        'returns "" if stdout is empty',
+        { cmd: 'empty', silent: true },
+        'empty',
+        '',
       ],
       [
         'throws error if result.signal is not equal 0',
@@ -89,7 +95,7 @@ describe('util', () => {
           }
 
           if (expectedError) {
-            expect(() => invoke(opts)).toThrowError(new Error(expectedError))
+            expect(() => invoke(opts)).toThrowError(new Error(expectedError.stderr?.toString()))
           } else {
             expect(invoke(opts)).toEqual(
               expectedResult === null ? expectedResult : expect.any(String),
@@ -109,7 +115,7 @@ describe('util', () => {
 
   describe('#formatArgs', () => {
     it('return proper values', () => {
-      const cases: [Record<string, any>, string[], string[]][] = [
+      const cases: [TFlags, string[], string[]][] = [
         [{ _: [], '--': [] }, [], []],
         [{ foo: 'bar' }, [], ['--foo', 'bar']],
         [{ f: true }, [], ['-f']],
