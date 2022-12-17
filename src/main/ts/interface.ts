@@ -1,6 +1,6 @@
 /** @module @qiwi/libdefkit */
-/** */
 
+/** */
 import { StdioOptions } from 'node:child_process'
 
 export type ICmdInvokeOptions = {
@@ -28,6 +28,9 @@ export type IContext = ICliFlags & {
   name: string
 } & TFlags
 
-export type TFlags = Record<string, string | boolean | number | Array<string | boolean | number>>
+export type TFlags = Record<
+  string,
+  string | boolean | number | Array<string | boolean | number>
+>
 
 export type IExecPipe = (ctx: IContext) => IContext | void

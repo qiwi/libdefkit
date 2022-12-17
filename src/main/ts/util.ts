@@ -1,14 +1,15 @@
 /** @module @qiwi/libdefkit */
+
 /** */
+import cp, { StdioOptions } from 'node:child_process'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import chalk from 'chalk'
-import cp, { StdioOptions } from 'node:child_process'
 import { findUpSync, pathExistsSync } from 'find-up'
-import { fileURLToPath } from 'node:url'
-import { dirname, resolve } from 'node:path'
 import { packageDirectorySync } from 'pkg-dir'
 
-import {ICmdInvokeOptions, TFlags} from './interface'
+import { ICmdInvokeOptions, TFlags } from './interface'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -71,7 +72,7 @@ export const formatFlags = (
     const flag = formatFlag(key)
 
     if (checkValue(key, value, omitlist, picklist)) {
-      [value].flat().forEach((v) => {
+      ;[value].flat().forEach((v) => {
         memo.push(flag)
 
         if (v !== true) {
@@ -88,15 +89,15 @@ export const formatArgs = (
   picklist?: string[],
 ): string[] => (Array.isArray(args) ? args : formatFlags(args, picklist))
 
+export const findBin = (cmd: string, cwd: string) =>
+  findUpSync(
+    (dir) => {
+      const ref = resolve(dir, 'node_modules', '.bin', cmd)
 
-export const findBin = (cmd: string, cwd: string) => findUpSync(
-  (dir) => {
-    const ref = resolve(dir, 'node_modules', '.bin', cmd)
-
-    return pathExistsSync(ref) ? ref : undefined
-  },
-  { cwd, type: 'file', allowSymlinks: true },
-)
+      return pathExistsSync(ref) ? ref : undefined
+    },
+    { cwd, type: 'file', allowSymlinks: true },
+  )
 
 export const getClosestBin = (
   cmd: string,
