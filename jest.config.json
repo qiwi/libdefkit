@@ -2,7 +2,10 @@
   "preset": "ts-jest",
   "collectCoverage": true,
   "transform": {
-    "^.+\\.tsx?$": "ts-jest"
+    "^.+\\.tsx?$": ["ts-jest", {
+      "useESM": true,
+      "tsconfig": "<rootDir>/tsconfig.test.json"
+    }]
   },
   "extensionsToTreatAsEsm": [".ts"],
   "coveragePathIgnorePatterns": [
@@ -34,12 +37,6 @@
     "mjs",
     "cjs"
   ],
-  "globals": {
-    "ts-jest": {
-      "useESM": true,
-      "tsconfig": "<rootDir>/tsconfig.test.json"
-    }
-  },
   "snapshotResolver": "<rootDir>/jest.snapshot.cjs",
   "resolver": "<rootDir>/jest.resolver.cjs"
 }

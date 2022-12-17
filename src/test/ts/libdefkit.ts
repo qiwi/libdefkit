@@ -1,7 +1,7 @@
 import '@jest/globals'
 
 import { fileURLToPath } from 'node:url'
-import { dirname, join, resolve } from 'path'
+import { dirname, join, resolve } from 'node:path'
 
 import { execute } from '../../main/ts'
 

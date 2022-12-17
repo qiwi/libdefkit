@@ -2,13 +2,13 @@
 /** */
 
 import chalk from 'chalk'
-import cp, { StdioOptions } from 'child_process'
+import cp, { StdioOptions } from 'node:child_process'
 import { findUpSync, pathExistsSync } from 'find-up'
 import { fileURLToPath } from 'node:url'
-import { dirname, resolve } from 'path'
+import { dirname, resolve } from 'node:path'
 import { packageDirectorySync } from 'pkg-dir'
 
-import { ICmdInvokeOptions } from './interface'
+import {ICmdInvokeOptions, TFlags} from './interface'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -42,7 +42,7 @@ export const invoke = ({
   const result = cp.spawnSync(_cmd, _args, { cwd, stdio })
 
   if (result.error || result.status) {
-    throw result
+    throw Object.assign(new Error(result.stderr.toString().trim()), result)
   }
 
   return result.stdout?.toString().trim() ?? result.stdout
@@ -50,9 +50,9 @@ export const invoke = ({
 
 const checkValue = (
   key: string,
-  value: any,
-  omitlist: any[],
-  picklist: any[],
+  value: TFlags[string],
+  omitlist: string[],
+  picklist: string[],
 ): boolean =>
   value !== 'false' &&
   !omitlist.includes(key) &&
@@ -62,7 +62,7 @@ const formatFlag = (key: string): string =>
   (key.length === 1 ? '-' : '--') + key
 
 export const formatFlags = (
-  flags: Record<string, any> = {},
+  flags: TFlags = {},
   picklist: string[] = [],
 ): string[] =>
   Object.keys(flags).reduce<string[]>((memo, key: string) => {
@@ -71,18 +71,20 @@ export const formatFlags = (
     const flag = formatFlag(key)
 
     if (checkValue(key, value, omitlist, picklist)) {
-      memo.push(flag)
+      [value].flat().forEach((v) => {
+        memo.push(flag)
 
-      if (value !== true) {
-        memo.push(value)
-      }
+        if (v !== true) {
+          memo.push(v + '')
+        }
+      })
     }
 
     return memo
   }, [])
 
 export const formatArgs = (
-  args: Record<string, any> | string[] = {},
+  args: string[] | TFlags = {},
   picklist?: string[],
 ): string[] => (Array.isArray(args) ? args : formatFlags(args, picklist))
 
@@ -101,5 +103,5 @@ export const getClosestBin = (
   cwd: string = process.cwd(),
 ): string =>
   findBin(cmd, cwd) ||
-  findBin(cmd, packageDirectorySync({ cwd: __dirname })) ||
+  findBin(cmd, packageDirectorySync({ cwd: __dirname }) as string) ||
   cmd

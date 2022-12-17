@@ -4,7 +4,7 @@
 import fse from 'fs-extra'
 import { globbySync } from 'globby'
 import { nanoid } from 'nanoid'
-import { join } from 'path'
+import { join } from 'node:path'
 
 import { IContext, IExecPipe } from './interface'
 import { invoke } from './util'
