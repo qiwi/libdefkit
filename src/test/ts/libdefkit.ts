@@ -1,7 +1,7 @@
-import '@jest/globals'
-
-import { fileURLToPath } from 'node:url'
 import { dirname, join, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+import '@jest/globals'
 
 import { execute } from '../../main/ts'
 
@@ -25,9 +25,7 @@ describe('libdefkit', () => {
 
       const cwd = JSON.stringify(process.cwd()).slice(1, -1)
       const snap = JSON.parse(
-        JSON.stringify(result)
-          .replaceAll(cwd, '<cwd>')
-          .replace(/\\\\/g, '/')
+        JSON.stringify(result).replaceAll(cwd, '<cwd>').replace(/\\\\/g, '/'),
       )
       snap.cwd = '<cwd>'
       snap.cache = '<cache>'

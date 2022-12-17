@@ -1,12 +1,13 @@
-import { jest } from '@jest/globals'
 import cp from 'node:child_process'
-import fse from 'fs-extra'
-import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import process from 'node:process'
+import { fileURLToPath } from 'node:url'
+
+import { jest } from '@jest/globals'
+import fse from 'fs-extra'
 import parseArguments from 'yargs-parser'
 
-import {ICmdInvokeOptions, TFlags} from '../../main/ts/interface'
+import { ICmdInvokeOptions, TFlags } from '../../main/ts/interface'
 import {
   formatArgs,
   getClosestBin,
@@ -18,7 +19,9 @@ import {
 const dotcmd = process.platform === 'win32' ? '.cmd' : ''
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const spawnResult = ({status = 0, stdout = '', stderr = ''} = {}): ReturnType<typeof cp.spawnSync> => ({
+const spawnResult = ({ status = 0, stdout = '', stderr = '' } = {}): ReturnType<
+  typeof cp.spawnSync
+> => ({
   status,
   stdout: Buffer.from(stdout),
   stderr: Buffer.from(stderr),
@@ -95,7 +98,9 @@ describe('util', () => {
           }
 
           if (expectedError) {
-            expect(() => invoke(opts)).toThrowError(new Error(expectedError.stderr?.toString()))
+            expect(() => invoke(opts)).toThrowError(
+              new Error(expectedError.stderr?.toString()),
+            )
           } else {
             expect(invoke(opts)).toEqual(
               expectedResult === null ? expectedResult : expect.any(String),

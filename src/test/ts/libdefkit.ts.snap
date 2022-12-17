@@ -21,7 +21,7 @@ declare module '@qiwi/libdefkit/target/es6' {
 }
 
 declare module '@qiwi/libdefkit/target/es6/libdefkit' {
-    /** */
+    /** @module @qiwi/libdefkit */
     import { ICliFlags, IContext, IExecPipe } from '@qiwi/libdefkit/target/es6/interface';
     export const normalize: IExecPipe;
     export const clear: IExecPipe;
