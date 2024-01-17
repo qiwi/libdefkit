@@ -43,10 +43,10 @@ export const invoke = ({
   const result = cp.spawnSync(_cmd, _args, { cwd, stdio })
 
   if (result.error || result.status) {
-    throw Object.assign(new Error(result.stderr.toString().trim()), result)
+    throw Object.assign(new Error(result.stderr?.toString?.().trim()), result)
   }
 
-  return result.stdout?.toString().trim() ?? result.stdout
+  return result.stdout?.toString?.().trim() ?? result.stdout
 }
 
 const checkValue = (
