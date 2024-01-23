@@ -100,10 +100,10 @@ declare module '@qiwi/libdefkitfake' {
 }
 declare module '@qiwi/libdefkit' {
   /** */
-  export * from '@qiwi/libdefkit/target/es6';
+  export * from '@qiwi/libdefkit/target/es6/index.js';
 }",
   "dtsOut": "<cwd>/src/test/temp/index.d.ts",
-  "entry": "target/es6",
+  "entry": "target/es6/index.js",
   "flowOut": "<cwd>/src/test/temp/index.flow.js",
   "name": "@qiwi/libdefkit",
   "tsconfig": [
