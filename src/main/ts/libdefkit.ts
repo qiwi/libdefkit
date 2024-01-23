@@ -6,17 +6,22 @@ import { join } from 'node:path'
 import fs from 'fs-extra'
 import { temporaryDirectory } from 'tempy'
 
-import { pipe as dtsgen } from './dts'
-import { ICliFlags, IContext, IExecPipe } from './interface'
-import { invoke } from './util'
+import { pipe as dtsgen } from './dts.js'
+import { ICliFlags, IContext, IExecPipe } from './interface.js'
+import { invoke } from './util.js'
 
 export const normalize: IExecPipe = (flags: ICliFlags): IContext => {
   const cwd = flags.cwd || process.cwd()
   const cache = temporaryDirectory()
+  const temp = temporaryDirectory()
   const name = fs.readJsonSync(join(cwd, 'package.json')).name
-  const entry = flags.entry ?? `${name}/target/es6`
-  const dtsOut = flags.dtsOut ?? join(cwd, 'typings', 'index.d.ts')
-  const flowOut = flags.flowOut ?? join(cwd, 'flow-typed', 'index.flow.js')
+  const entry = flags.entry ?? `target/es6/index.js`
+  const dtsOut = flags.dtsOut === 'false'
+    ? join(temp, 'index.d.ts')
+    : flags.dtsOut ?? join(cwd, 'typings', 'index.d.ts')
+  const flowOut = flags.flowOut === 'false'
+    ? join(temp, 'index.flow.js')
+    : flags.flowOut ?? join(cwd, 'flow-typed', 'index.flow.js')
 
   return { cache, ...flags, cwd, name, entry, dtsOut, flowOut }
 }

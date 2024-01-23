@@ -26,6 +26,9 @@ export type IContext = ICliFlags & {
   cache: string
   cwd: string
   name: string
+  entry: string
+  dtsOut: string
+  flowOut: string
 } & TFlags
 
 export type TFlags = Record<

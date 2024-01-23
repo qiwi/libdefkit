@@ -7,7 +7,7 @@ import { jest } from '@jest/globals'
 import fse from 'fs-extra'
 import parseArguments from 'yargs-parser'
 
-import { ICmdInvokeOptions, TFlags } from '../../main/ts/interface'
+import { ICmdInvokeOptions, TFlags } from '../../main/ts/interface.js'
 import {
   formatArgs,
   getClosestBin,

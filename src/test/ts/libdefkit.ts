@@ -1,9 +1,9 @@
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import '@jest/globals'
+import { describe, it } from '@jest/globals'
 
-import { execute } from '../../main/ts'
+import { execute } from '../../main/ts/index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

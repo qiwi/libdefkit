@@ -1,4 +1,4 @@
 /** @module @qiwi/libdefkit */
 /** */
 
-export * from './libdefkit'
+export * from './libdefkit.js'
