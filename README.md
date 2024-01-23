@@ -17,7 +17,7 @@ Insert script to `package.json`
 ```json
 {
   "scripts": {
-    "build:libdef": "libdefkit --tsconfig=tsconfig.es5.json --tsconfig=tsconfig.es6.json"
+    "build:libdef": "libdefkit --tsconfig=tsconfig.esm.json --tsconfig=tsconfig.cjs.json"
   }
 }
 ```
@@ -27,7 +27,7 @@ Insert script to `package.json`
 |-------------------|---------------------------------------|----------------------------|
 | `--help`          | Display usage hints                   |                            |
 | `--cwd`           | Set current working dir               | `process.cwd()`            |  
-| `--entry`         | Define pkg entry point                | `<pkgName>/target/es5`     |   
+| `--entry`         | Define pkg entry point                | `target/es6/index.js`      |   
 | `--tsconfig`      | Define path(s) to project's TS config |                            |
 | `--customTypings` | Attach custom libdefs to d.ts bundle  |                            |
 | `--cache`         | Dir for temporary assets              | `tempy.directory()`        |

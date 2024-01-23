@@ -9,7 +9,7 @@ import chalk from 'chalk'
 import { findUpSync, pathExistsSync } from 'find-up'
 import { packageDirectorySync } from 'pkg-dir'
 
-import { ICmdInvokeOptions, TFlags } from './interface'
+import { ICmdInvokeOptions, TFlags } from './interface.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -72,7 +72,7 @@ export const formatFlags = (
     const flag = formatFlag(key)
 
     if (checkValue(key, value, omitlist, picklist)) {
-      ;[value].flat().forEach((v) => {
+      ([value]).flat().forEach((v) => {
         memo.push(flag)
 
         if (v !== true) {
@@ -87,7 +87,7 @@ export const formatFlags = (
 export const formatArgs = (
   args: string[] | TFlags = {},
   picklist?: string[],
-): string[] => (Array.isArray(args) ? args : formatFlags(args, picklist))
+): string[] => [...(Array.isArray(args) ? args : formatFlags(args, picklist))]
 
 export const findBin = (cmd: string, cwd: string) =>
   findUpSync(

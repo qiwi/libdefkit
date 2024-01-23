@@ -1,28 +1,18 @@
 {
   "compilerOptions": {
-    "rootDir": "./src/main/ts/",
-    "baseUrl": "./src/main/ts/",
-    "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es5",
     "lib": [
-      "esnext"
+      "es2021",
+      "dom"
     ],
     "strict": true,
-    "sourceMap": false,
-    "declaration": false,
-    "noEmitHelpers": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "importHelpers": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "experimentalDecorators": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-
-    "incremental": true,
-    "tsBuildInfoFile": "./buildcache/.tsbuildinfo"
+    "allowJs": true,
+    "noImplicitAny": true,
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src/main/**/*"

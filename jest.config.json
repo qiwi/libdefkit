@@ -2,12 +2,12 @@
   "preset": "ts-jest",
   "collectCoverage": true,
   "transform": {
-    "^.+\\.tsx?$": ["ts-jest", {
+    "\\.[jt]sx?$": ["ts-jest", {
       "useESM": true,
       "tsconfig": "<rootDir>/tsconfig.test.json"
     }]
   },
-  "extensionsToTreatAsEsm": [".ts"],
+  "extensionsToTreatAsEsm": [".ts", ".tsx"],
   "coveragePathIgnorePatterns": [
     "<rootDir>/src/main/ts/cli.ts"
   ],
@@ -22,11 +22,6 @@
     "/node_modules/",
     "<rootDir>/src/test/stub"
   ],
-  "moduleNameMapper": {
-    "chalk": "chalk/source/index.js",
-    "#ansi-styles": "chalk/source/vendor/ansi-styles/index.js",
-    "#supports-color": "chalk/source/vendor/supports-color/index.js"
-  },
   "moduleFileExtensions": [
     "ts",
     "tsx",
@@ -37,6 +32,8 @@
     "mjs",
     "cjs"
   ],
-  "snapshotResolver": "<rootDir>/jest.snapshot.cjs",
-  "resolver": "<rootDir>/jest.resolver.cjs"
+  "moduleNameMapper": {
+    "(.+)\\.js": "$1"
+  },
+  "snapshotResolver": "<rootDir>/jest.snapshot.cjs"
 }
