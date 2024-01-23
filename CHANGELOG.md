@@ -1,3 +1,14 @@
+## [6.0.0](https://github.com/qiwi/libdefkit/compare/v5.0.0...v6.0.0) (2024-01-23)
+
+### Features
+* feat: replace bubdle-gen with depseek ([5e46d2b](https://github.com/qiwi/libdefkit/commit/5e46d2b67a2870a21ba90950826ec1b6dfbda6bb))
+
+### BREAKING CHANGES
+* unpredictable side effects may occur ([5e46d2b](https://github.com/qiwi/libdefkit/commit/5e46d2b67a2870a21ba90950826ec1b6dfbda6bb))
+
+### Fixes & improvements
+* fix: improve err capture ([423ef64](https://github.com/qiwi/libdefkit/commit/423ef64bc420a37325f599bf4b88a25b3fa42b8c))
+
 ## [4.0.6](https://github.com/qiwi/libdefkit/compare/v4.0.5...v4.0.6) (2022-03-24)
 
 
