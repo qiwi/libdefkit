@@ -1,3 +1,8 @@
+## [6.1.2](https://github.com/qiwi/libdefkit/compare/v6.1.1...v6.1.2) (2024-01-30)
+
+### Fixes & improvements
+* fix: update tsc-dts-fix to v0.0.7 ([0f84389](https://github.com/qiwi/libdefkit/commit/0f843893990869c103e609a46e890c349b9a54c0))
+
 ## [6.1.1](https://github.com/qiwi/libdefkit/compare/v6.1.0...v6.1.1) (2024-01-30)
 
 ### Fixes & improvements
