@@ -1,3 +1,8 @@
+## [6.1.1](https://github.com/qiwi/libdefkit/compare/v6.1.0...v6.1.1) (2024-01-30)
+
+### Fixes & improvements
+* fix: tweak up `input` param resolution ([072408a](https://github.com/qiwi/libdefkit/commit/072408aeb16565c05f5ddb5d39e61b8a185ad243))
+
 ## [6.1.0](https://github.com/qiwi/libdefkit/compare/v6.0.1...v6.1.0) (2024-01-30)
 
 ### Features
