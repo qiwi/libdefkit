@@ -1,3 +1,8 @@
+## [6.1.0](https://github.com/qiwi/libdefkit/compare/v6.0.1...v6.1.0) (2024-01-30)
+
+### Features
+* feat: provide ext configuration ([4a7eec8](https://github.com/qiwi/libdefkit/commit/4a7eec8c9f6455539880c717ffab4693838e910a))
+
 ## [6.0.1](https://github.com/qiwi/libdefkit/compare/v6.0.0...v6.0.1) (2024-01-30)
 
 ### Fixes & improvements
