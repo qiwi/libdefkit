@@ -1,3 +1,8 @@
+## [6.0.1](https://github.com/qiwi/libdefkit/compare/v6.0.0...v6.0.1) (2024-01-30)
+
+### Fixes & improvements
+* perf: migrate to tsc-dts-fix ([eff17d5](https://github.com/qiwi/libdefkit/commit/eff17d5e248c14f2497b0c85bc6725f0ced0e8cb))
+
 ## [6.0.0](https://github.com/qiwi/libdefkit/compare/v5.0.0...v6.0.0) (2024-01-23)
 
 ### Features
