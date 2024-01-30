@@ -4054,10 +4054,10 @@ ts-jest@^29.1.2:
     semver "^7.5.3"
     yargs-parser "^21.0.1"
 
-tsc-dts-fix@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/tsc-dts-fix/-/tsc-dts-fix-0.0.6.tgz#b0ad346eb6c7f04dc5cdd784f3b3ed247414abdb"
-  integrity sha512-b5mkWCIl7gGY4dJpYFZRPklAfv/c8zRWl3i8RdYjmUaVDGijirOyjFEuj7jAlHcaH9m7k24wWQGkxXMi/6DbFA==
+tsc-dts-fix@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/tsc-dts-fix/-/tsc-dts-fix-0.0.7.tgz#f1315a52b9e87bcffc2c00ad27eb00a0b1d64641"
+  integrity sha512-9hLXK7+dQFmGDcbDR2Sm0sBWwZRMg8jR/lBWnGgoEKWamcTBRtmLuAx0TqMcWKI3xkEgaVuK+07Zlp4exb+Aww==
   dependencies:
     "@topoconfig/extends" "0.1.9"
     depseek "0.2.4"
