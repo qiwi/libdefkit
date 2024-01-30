@@ -14,6 +14,7 @@ export const generate = (
   name: string,
   cwd: string,
   entryPoints: Record<string, string> = {},
+  ext: string,
 ): string => {
   const cfg = populateSync(fse.readJsonSync(tsconfig), {
     merge: {
@@ -40,7 +41,7 @@ export const generate = (
     outDir,
     entryPoints,
     conceal: false,
-    ext: '.js',
+    ext,
     cwd
   })['bundle.d.ts']
 }
@@ -55,6 +56,7 @@ export const pipe: IExecPipe = (ctx): IContext => {
   const {
     name,
     entry,
+    ext,
     tsconfig = [],
     customTypings = [],
     dtsOut,
@@ -66,7 +68,8 @@ export const pipe: IExecPipe = (ctx): IContext => {
       cfg,
       name,
       cwd,
-      i === 0 ? {'.': entry ?? './index.ts'} : {}
+      i === 0 ? {'.': entry ?? './index.ts'} : {},
+      ext
     ),
   ).join('\n\n')
 

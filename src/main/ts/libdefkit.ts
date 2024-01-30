@@ -16,6 +16,7 @@ export const normalize: IExecPipe = (flags: ICliFlags): IContext => {
   const temp = temporaryDirectory()
   const name = fs.readJsonSync(join(cwd, 'package.json')).name
   const entry = flags.entry ?? `./index.ts`
+  const ext = flags.ext ?? '.js'
   const dtsOut = flags.dtsOut === 'false'
     ? join(temp, 'index.d.ts')
     : flags.dtsOut ?? join(cwd, 'typings', 'index.d.ts')
@@ -23,7 +24,7 @@ export const normalize: IExecPipe = (flags: ICliFlags): IContext => {
     ? join(temp, 'index.flow.js')
     : flags.flowOut ?? join(cwd, 'flow-typed', 'index.flow.js')
 
-  return { cache, ...flags, cwd, name, entry, dtsOut, flowOut }
+  return { cache, ...flags, cwd, name, entry, ext, dtsOut, flowOut }
 }
 
 export const clear: IExecPipe = (ctx) => {

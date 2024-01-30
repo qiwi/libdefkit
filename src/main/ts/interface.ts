@@ -15,6 +15,7 @@ export type ICmdInvokeOptions = {
 export type ICliFlags = {
   cwd?: string
   entry?: string
+  ext?: string
   dtsOut?: string
   flowOut?: string
   tsconfig?: string[]
@@ -27,6 +28,7 @@ export type IContext = ICliFlags & {
   cwd: string
   name: string
   entry: string
+  ext: string
   dtsOut: string
   flowOut: string
 } & TFlags

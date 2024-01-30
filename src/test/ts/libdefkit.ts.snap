@@ -23,6 +23,7 @@ declare module "@qiwi/libdefkit/target/es6/interface.js" {
     export type ICliFlags = {
         cwd?: string;
         entry?: string;
+        ext?: string;
         dtsOut?: string;
         flowOut?: string;
         tsconfig?: string[];
@@ -34,6 +35,7 @@ declare module "@qiwi/libdefkit/target/es6/interface.js" {
         cwd: string;
         name: string;
         entry: string;
+        ext: string;
         dtsOut: string;
         flowOut: string;
     } & TFlags;
@@ -57,7 +59,7 @@ declare module "@qiwi/libdefkit/target/es6/util.js" {
 }
 declare module "@qiwi/libdefkit/target/es6/dts.js" {
     import { IExecPipe } from "@qiwi/libdefkit/target/es6/interface.js";
-    export const generate: (tsconfig: string, name: string, cwd: string, entryPoints?: Record<string, string>) => string;
+    export const generate: (tsconfig: string, name: string, cwd: string, entryPoints: Record<string, string>, ext: string) => string;
     export const mixFiles: (files: string[], memo?: string) => string;
     export const pipe: IExecPipe;
 }
@@ -83,6 +85,7 @@ declare module '@qiwi/libdefkitfake' {
 ",
   "dtsOut": "<cwd>/src/test/temp/index.d.ts",
   "entry": "./index.ts",
+  "ext": ".js",
   "flowOut": "<cwd>/src/test/temp/index.flow.js",
   "name": "@qiwi/libdefkit",
   "tsconfig": [

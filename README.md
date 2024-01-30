@@ -23,16 +23,17 @@ Insert script to `package.json`
 ```
 
 ## CLI
-| Flag              | Description                           | Default                    |            
-|-------------------|---------------------------------------|----------------------------|
-| `--help`          | Display usage hints                   |                            |
-| `--cwd`           | Set current working dir               | `process.cwd()`            |  
-| `--entry`         | Define pkg entry point                | `./index.ts`               |   
-| `--tsconfig`      | Define path(s) to project's TS config |                            |
-| `--customTypings` | Attach custom libdefs to d.ts bundle  |                            |
-| `--cache`         | Dir for temporary assets              | `tempy.directory()`        |
-| `--dtsOut`        | **TS** typings output                 | `typings/index.d.ts`       |
-| `--flowOut`       | **Flow** libdef output                | `flow-typed/index.flow.js` |
+| Flag              | Description                                                 | Default                    |            
+|-------------------|-------------------------------------------------------------|----------------------------|
+| `--help`          | Display usage hints                                         |                            |
+| `--cwd`           | Set current working dir                                     | `process.cwd()`            |  
+| `--entry`         | Define pkg entry point                                      | `./index.ts`               |
+| `--ext`           | Extension to use in module declarations. `''` to unset any. | `.js`                      |        
+| `--tsconfig`      | Define path(s) to project's TS config                       |                            |
+| `--customTypings` | Attach custom libdefs to d.ts bundle                        |                            |
+| `--cache`         | Dir for temporary assets                                    | `tempy.directory()`        |
+| `--dtsOut`        | **TS** typings output                                       | `typings/index.d.ts`       |
+| `--flowOut`       | **Flow** libdef output                                      | `flow-typed/index.flow.js` |
 
 ## License
 [MIT](./LICENSE)

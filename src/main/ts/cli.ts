@@ -11,7 +11,8 @@ const cli = meow(
       --cwd, working dir path
       --tsconfig
       --customTypings, attach custom libdefs to d.ts bundle
-      --entry, alias entry (<pkgName>/target/es5/index by default)
+      --entry, pkg entry point (<pkgName>/index by default)
+      --ext, extension to use in module declarations (default: .js)
       --dtsOut, dts output (typings/index.d.ts by default)
       --flowOut, flow output (flow-typed/index.flow.js by default)
 `,
@@ -36,6 +37,12 @@ const cli = meow(
         isMultiple: true,
       },
       cache: {
+        type: 'string',
+      },
+      entry: {
+        type: 'string',
+      },
+      ext: {
         type: 'string',
       },
     },
