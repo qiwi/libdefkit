@@ -681,6 +681,11 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@topoconfig/extends@0.1.8", "@topoconfig/extends@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@topoconfig/extends/-/extends-0.1.8.tgz#bad7e641d75a9dcb964ca6404375d53dcf132811"
+  integrity sha512-VqndmimzUiQNL1L40dEPNwAOtYxlTzIgUdpXe6wHyYvGP56ELHlxBjObs9wjeDmCXLQIAJeaeGJuAJNJC9cvig==
+
 "@trivago/prettier-plugin-sort-imports@^4.1.1":
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/@trivago/prettier-plugin-sort-imports/-/prettier-plugin-sort-imports-4.3.0.tgz#725f411646b3942193a37041c84e0b2116339789"
@@ -1423,10 +1428,10 @@ define-properties@^1.1.3, define-properties@^1.2.0, define-properties@^1.2.1:
     has-property-descriptors "^1.0.0"
     object-keys "^1.1.1"
 
-depseek@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/depseek/-/depseek-0.2.2.tgz#53386e7a339c8044b58283ff5505c8077bb2d2d6"
-  integrity sha512-RqWAxWU2T49e39PQpJla4oIBoxXIFXgMd/vBZnTXk1hKH34kyo2G62C7tYKKnBxrj1WFfIvz74kFDTldXagE0Q==
+depseek@0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/depseek/-/depseek-0.2.4.tgz#93c857191be14f73f6fef674c44f7dd88732af4e"
+  integrity sha512-MneWFr//kZfwpJNiVfb4QkFLU9e3G78ZoAxEHYhd7MuCIRRBqMDVq1kkyeOcFkvybLFwGsnO+VGuEjncmedczQ==
 
 detect-newline@^3.0.0:
   version "3.1.0"
@@ -3151,15 +3156,15 @@ minimist-options@4.1.0:
     is-plain-obj "^1.1.0"
     kind-of "^6.0.3"
 
+minimist@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
+  integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
+
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
-
-nanoid@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-4.0.2.tgz#140b3c5003959adbebf521c170f282c5e7f9fb9e"
-  integrity sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==
 
 natural-compare-lite@^1.4.0:
   version "1.4.0"
@@ -4043,6 +4048,15 @@ ts-jest@^29.1.2:
     make-error "1.x"
     semver "^7.5.3"
     yargs-parser "^21.0.1"
+
+tsc-dts-fix@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/tsc-dts-fix/-/tsc-dts-fix-0.0.5.tgz#c5a85964cac5c0b9339ab68c27d721a922f56452"
+  integrity sha512-T6lUCCtseEB8SzoswD+fkNxMeafcgnz5ZGIapcp1qMv9hxyswNNeQN9FeOKXtMnSZmU98Wg9HVsdNBDeP6prYw==
+  dependencies:
+    "@topoconfig/extends" "0.1.8"
+    depseek "0.2.4"
+    minimist "^1.2.8"
 
 tslib@^1.8.1:
   version "1.14.1"

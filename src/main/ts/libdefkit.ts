@@ -15,7 +15,7 @@ export const normalize: IExecPipe = (flags: ICliFlags): IContext => {
   const cache = temporaryDirectory()
   const temp = temporaryDirectory()
   const name = fs.readJsonSync(join(cwd, 'package.json')).name
-  const entry = flags.entry ?? `target/es6/index.js`
+  const entry = flags.entry ?? `./index.ts`
   const dtsOut = flags.dtsOut === 'false'
     ? join(temp, 'index.d.ts')
     : flags.dtsOut ?? join(cwd, 'typings', 'index.d.ts')

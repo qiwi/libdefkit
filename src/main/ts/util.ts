@@ -106,3 +106,12 @@ export const getClosestBin = (
   findBin(cmd, cwd) ||
   findBin(cmd, packageDirectorySync({ cwd: __dirname }) as string) ||
   cmd
+
+export const findCommon = (files: string[]) => {
+  if (files.length === 0) return ''
+
+  const first = files[0]
+  // eslint-disable-next-line
+  return first.slice(0, first.split('').findIndex((c, i) => files.some(f => f.charAt(i) !== c)))
+}
+

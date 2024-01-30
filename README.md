@@ -27,7 +27,7 @@ Insert script to `package.json`
 |-------------------|---------------------------------------|----------------------------|
 | `--help`          | Display usage hints                   |                            |
 | `--cwd`           | Set current working dir               | `process.cwd()`            |  
-| `--entry`         | Define pkg entry point                | `target/es6/index.js`      |   
+| `--entry`         | Define pkg entry point                | `./index.ts`               |   
 | `--tsconfig`      | Define path(s) to project's TS config |                            |
 | `--customTypings` | Attach custom libdefs to d.ts bundle  |                            |
 | `--cache`         | Dir for temporary assets              | `tempy.directory()`        |

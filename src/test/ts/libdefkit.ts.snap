@@ -7,38 +7,10 @@ exports[`libdefkit #execute returns proper dts bundle 1`] = `
     "customTypings/**/*.d.ts",
   ],
   "cwd": "<cwd>",
-  "dts": "declare module '@qiwi/libdefkit/target/es6/cli' {
-    
-    export {};
-    
-}
-
-declare module '@qiwi/libdefkit/target/es6/dts' {
-    import { IExecPipe } from '@qiwi/libdefkit/target/es6/interface.js';
-    export const generate: (tsconfig: string, tempDir: string, name: string) => string;
-    export const mergeDts: ({ files, root, prefix }: {
-        files: string[];
-        root?: string | undefined;
-        prefix?: string | undefined;
-    }) => string;
-    export const mixFiles: (files: string[], memo?: string) => string;
-    export const fixModuleReferences: (ctx: {
-        relName: string;
-        relBase: string;
-        contents: string;
-        prefix: string;
-    }) => string;
-    export const pipe: IExecPipe;
-    
-}
-
-declare module '@qiwi/libdefkit/target/es6/index' {
-    export * from '@qiwi/libdefkit/target/es6/libdefkit.js';
-    
-}
-
-declare module '@qiwi/libdefkit/target/es6/interface' {
-    /// <reference types="node" />
+  "dts": "/// <reference types="node" />
+declare module "@qiwi/libdefkit/target/es6/interface.js" {
+    /** @module @qiwi/libdefkit */
+    /** */
     import { StdioOptions } from 'node:child_process';
     export type ICmdInvokeOptions = {
         cmd: string;
@@ -67,43 +39,50 @@ declare module '@qiwi/libdefkit/target/es6/interface' {
     } & TFlags;
     export type TFlags = Record<string, string | boolean | number | Array<string | boolean | number>>;
     export type IExecPipe = (ctx: IContext) => IContext | void;
-    
 }
-
-declare module '@qiwi/libdefkit/target/es6/libdefkit' {
-    import { ICliFlags, IContext, IExecPipe } from '@qiwi/libdefkit/target/es6/interface.js';
-    export const normalize: IExecPipe;
-    export const clear: IExecPipe;
-    export const flowgen: IExecPipe;
-    export const pipeline: IExecPipe[];
-    export const execute: (flags: ICliFlags) => IContext;
-    
-}
-
-declare module '@qiwi/libdefkit/target/es6/util' {
-    /// <reference types="node" />
+declare module "@qiwi/libdefkit/target/es6/util.js" {
+    /** @module @qiwi/libdefkit */
+    /** */
     import { StdioOptions } from 'node:child_process';
-    import { ICmdInvokeOptions, TFlags } from '@qiwi/libdefkit/target/es6/interface.js';
+    import { ICmdInvokeOptions, TFlags } from "@qiwi/libdefkit/target/es6/interface.js";
     export const STDIO_INHERIT: StdioOptions;
     export const STDIO_NULL: StdioOptions;
     export const getCmd: (cmd: string, cwd: string, closest?: boolean, isWin?: boolean) => string;
     export const invoke: ({ cmd, args, cwd, silent, closest, stdio, }: ICmdInvokeOptions) => string;
     export const formatFlags: (flags?: TFlags, picklist?: string[]) => string[];
     export const formatArgs: (args?: string[] | TFlags, picklist?: string[]) => string[];
-    export const findBin: (cmd: string, cwd: string) => string | undefined;
+    export const findBin: (cmd: string, cwd: string) => string;
     export const getClosestBin: (cmd: string, cwd?: string) => string;
-    
+    export const findCommon: (files: string[]) => string;
 }
-
+declare module "@qiwi/libdefkit/target/es6/dts.js" {
+    import { IExecPipe } from "@qiwi/libdefkit/target/es6/interface.js";
+    export const generate: (tsconfig: string, name: string, cwd: string, entryPoints?: Record<string, string>) => string;
+    export const mixFiles: (files: string[], memo?: string) => string;
+    export const pipe: IExecPipe;
+}
+declare module "@qiwi/libdefkit/target/es6/libdefkit.js" {
+    import { ICliFlags, IContext, IExecPipe } from "@qiwi/libdefkit/target/es6/interface.js";
+    export const normalize: IExecPipe;
+    export const clear: IExecPipe;
+    export const flowgen: IExecPipe;
+    export const pipeline: IExecPipe[];
+    export const execute: (flags: ICliFlags) => IContext;
+}
+declare module "@qiwi/libdefkit/target/es6/index.js" {
+    /** @module @qiwi/libdefkit */
+    /** */
+    export * from "@qiwi/libdefkit/target/es6/libdefkit.js";
+}
+declare module "@qiwi/libdefkit" {
+    export * from "@qiwi/libdefkit/target/es6/index.js"
+}
 declare module '@qiwi/libdefkitfake' {
   export const foo: string
 }
-declare module '@qiwi/libdefkit' {
-  /** */
-  export * from '@qiwi/libdefkit/target/es6/index.js';
-}",
+",
   "dtsOut": "<cwd>/src/test/temp/index.d.ts",
-  "entry": "target/es6/index.js",
+  "entry": "./index.ts",
   "flowOut": "<cwd>/src/test/temp/index.flow.js",
   "name": "@qiwi/libdefkit",
   "tsconfig": [
