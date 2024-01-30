@@ -1,6 +1,7 @@
 /** @module @qiwi/libdefkit */
 
 /** */
+import path from 'node:path'
 import fse from 'fs-extra'
 import { globbySync } from 'globby'
 import { generateDts } from 'tsc-dts-fix'
@@ -35,7 +36,7 @@ export const generate = (
   } = cfg
 
   return generateDts({
-    input: rootDir + '/index.ts',
+    input: path.join(rootDir, 'index.ts'),
     strategy: 'bundle',
     pkgName: name,
     outDir,
