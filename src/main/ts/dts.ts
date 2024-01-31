@@ -8,7 +8,7 @@ import { generateDts } from 'tsc-dts-fix'
 import { populateSync } from '@topoconfig/extends'
 
 import { IContext, IExecPipe } from './interface.js'
-import { findCommon } from './util.js'
+import { findBase } from './util.js'
 
 export const generate = (
   tsconfig: string,
@@ -27,7 +27,7 @@ export const generate = (
     include = [],
     compilerOptions: {
       outDir = '' ,
-      rootDir = findCommon(globbySync(include, {
+      rootDir = findBase(globbySync(include, {
         onlyFiles: true,
         absolute: true,
         cwd,

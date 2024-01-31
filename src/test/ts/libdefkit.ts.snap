@@ -55,7 +55,7 @@ declare module "@qiwi/libdefkit/target/es6/util.js" {
     export const formatArgs: (args?: string[] | TFlags, picklist?: string[]) => string[];
     export const findBin: (cmd: string, cwd: string) => string;
     export const getClosestBin: (cmd: string, cwd?: string) => string;
-    export const findCommon: (files: string[]) => string;
+    export const findBase: (files: string[]) => string;
 }
 declare module "@qiwi/libdefkit/target/es6/dts.js" {
     import { IExecPipe } from "@qiwi/libdefkit/target/es6/interface.js";
