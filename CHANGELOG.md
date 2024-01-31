@@ -1,3 +1,8 @@
+## [6.1.3](https://github.com/qiwi/libdefkit/compare/v6.1.2...v6.1.3) (2024-01-31)
+
+### Fixes & improvements
+* fix(dts-fix): handle findBase corner cases ([0b60bcd](https://github.com/qiwi/libdefkit/commit/0b60bcd8d8968bab28e2c228fe38703ca7bc53e9))
+
 ## [6.1.2](https://github.com/qiwi/libdefkit/compare/v6.1.1...v6.1.2) (2024-01-30)
 
 ### Fixes & improvements
