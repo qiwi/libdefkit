@@ -2,7 +2,7 @@
 
 /** */
 import cp, { StdioOptions } from 'node:child_process'
-import { dirname, resolve } from 'node:path'
+import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import chalk from 'chalk'
@@ -11,7 +11,7 @@ import { packageDirectorySync } from 'pkg-dir'
 
 import { ICmdInvokeOptions, TFlags } from './interface.js'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export const STDIO_INHERIT: StdioOptions = ['inherit', 'inherit', 'inherit']
 export const STDIO_NULL: StdioOptions = [null, null, null] // eslint-disable-line
@@ -92,7 +92,7 @@ export const formatArgs = (
 export const findBin = (cmd: string, cwd: string) =>
   findUpSync(
     (dir) => {
-      const ref = resolve(dir, 'node_modules', '.bin', cmd)
+      const ref = path.resolve(dir, 'node_modules', '.bin', cmd)
 
       return pathExistsSync(ref) ? ref : undefined
     },
@@ -107,11 +107,14 @@ export const getClosestBin = (
   findBin(cmd, packageDirectorySync({ cwd: __dirname }) as string) ||
   cmd
 
-export const findCommon = (files: string[]) => {
-  if (files.length === 0) return ''
-
+const dirname = (f: string) => f.endsWith('/') ? f : path.dirname(f) + '/'
+export const findBase = (files: string[]) => {
   const first = files[0]
+
+  if (files.length === 0) return ''
+  if (files.length === 1) return dirname(first)
+
   // eslint-disable-next-line
-  return first.slice(0, first.split('').findIndex((c, i) => files.some(f => f.charAt(i) !== c)))
+  return dirname(first.slice(0, first.split('').findIndex((c, i) => files.some(f => f.charAt(i) !== c))))
 }
 
