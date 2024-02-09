@@ -1,3 +1,8 @@
+## [6.1.4](https://github.com/qiwi/libdefkit/compare/v6.1.3...v6.1.4) (2024-02-09)
+
+### Fixes & improvements
+* perf: update xtends ([6186ec3](https://github.com/qiwi/libdefkit/commit/6186ec37e5ef9ad78f5058d11b4ab588d5997007))
+
 ## [6.1.3](https://github.com/qiwi/libdefkit/compare/v6.1.2...v6.1.3) (2024-01-31)
 
 ### Fixes & improvements
