@@ -18,9 +18,7 @@ export const generate = (
   ext: string,
 ): string => {
   const cfg = populateSync(fse.readJsonSync(tsconfig), {
-    merge: {
-      compilerOptions: 'merge',
-    }
+    compilerOptions: 'merge',
   })
 
   const {
